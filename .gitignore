@@ -5,3 +5,5 @@ venv
 .o
 .vscode
 .idea
+.ojb
+.sh
