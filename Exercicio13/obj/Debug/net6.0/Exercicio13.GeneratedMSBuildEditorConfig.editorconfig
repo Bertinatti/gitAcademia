@@ -7,4 +7,8 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Exercicio13
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\BERTINATTI\Source\Repos\Bertinatti\gitAcademia\Exercicio13\
+=======
+build_property.ProjectDir = C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\Exercicio13\
+>>>>>>> 8ff5d2ef9f71505fed41df2de309c6a8e83ff6a6
