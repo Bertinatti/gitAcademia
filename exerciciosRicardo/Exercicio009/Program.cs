@@ -39,6 +39,7 @@ for (int i = 0; i < glicemia.Length; i++)
 // efetua o cálculo da média
 media = (glicemia[0] + glicemia[1] + glicemia[2]) / 3;
 
+// checagem da media glicemica
 if (media < 80)
 {
     Console.WriteLine("Parabéns, você pode reduzir 2 unidades de insulina.");
@@ -47,5 +48,3 @@ else if (media > 150)
 {
     Console.WriteLine("Cuidado, você pode aumentar 2 unidades de insulina.");
 }
-
-
