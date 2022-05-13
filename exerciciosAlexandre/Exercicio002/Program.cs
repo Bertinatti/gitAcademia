@@ -87,5 +87,8 @@ do
  // condição final de repetição do DoWhile
 } while (resp != "N");
 
+<<<<<<< HEAD
 // efetua a mensagem de saída do programa
+=======
+>>>>>>> 9c19bb3967a62d983c316957aad7f1d089f5eba3
 Console.WriteLine("Saindo...");
