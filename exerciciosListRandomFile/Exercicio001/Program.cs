@@ -99,16 +99,24 @@ do
                 max = listaTMP[listaTMP.Count - 1];
                 soma = 0;
 
+<<<<<<< HEAD
                 // realiza a soma dos elementos
+=======
+>>>>>>> a21aa50af854efcb732eba52047f0866917d1be0
                 foreach (int i in listaTMP)
                 {
                     soma += i;
                 }
 
+<<<<<<< HEAD
                 // efetua a média
                 media = soma / listaTMP.Count;
 
                 // declara a variável auxiliar para o cálculo da mediana e realiza o cálculo em seguida
+=======
+                media = soma / listaTMP.Count;
+
+>>>>>>> a21aa50af854efcb732eba52047f0866917d1be0
                 int meio = listaTMP.Count / 2;
                 if (listaTMP.Count % 2 != 0)
                 {
@@ -119,7 +127,10 @@ do
                     mediana = listaTMP[meio] + listaTMP[meio - 1] / 2;
                 }
 
+<<<<<<< HEAD
                 // imprime os resultados na tela
+=======
+>>>>>>> a21aa50af854efcb732eba52047f0866917d1be0
                 Console.WriteLine("================================RESULTADOS=================================\n" +
                                   "A média da lista é:                                     {0:F2}\n" +
                                   "O valor mínino da lista é:                              {1:F2}\n" +
