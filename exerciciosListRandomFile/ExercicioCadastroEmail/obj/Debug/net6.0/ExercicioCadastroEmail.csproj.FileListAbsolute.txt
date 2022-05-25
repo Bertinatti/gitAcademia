@@ -1,0 +1,15 @@
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.csproj.AssemblyReference.cache
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.AssemblyInfoInputs.cache
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.AssemblyInfo.cs
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.csproj.CoreCompileInputs.cache
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\bin\Debug\net6.0\ExercicioCadastroEmail.exe
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\bin\Debug\net6.0\ExercicioCadastroEmail.deps.json
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\bin\Debug\net6.0\ExercicioCadastroEmail.runtimeconfig.json
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\bin\Debug\net6.0\ExercicioCadastroEmail.dll
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\bin\Debug\net6.0\ExercicioCadastroEmail.pdb
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.dll
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\refint\ExercicioCadastroEmail.dll
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.pdb
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ExercicioCadastroEmail.genruntimeconfig.cache
+C:\Users\BERTINATTI\source\repos\Bertinatti\gitAcademia\exerciciosListRandomFile\ExercicioCadastroEmail\obj\Debug\net6.0\ref\ExercicioCadastroEmail.dll
