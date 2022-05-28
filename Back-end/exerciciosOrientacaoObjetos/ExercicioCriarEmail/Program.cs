@@ -14,10 +14,10 @@ do
                  "                                               MENU                                            \n" +
                  "===============================================================================================\n" +
                  "[1] - Cadastrar Aluno e gerar E-mail.\n" +
-                 "[2] - Exibir dados.\n" +
-                 "[3] - Exibir nomes.\n" +
+                 "[2] - Exibir lista de Aluno e E-mail.\n" +
+                 "[3] - Exibir Alunos por Curso.\n" +
                  "[4] - Exibir e-mails.\n" +
-                 "[5] - Exibir os domínios.\n" +
+                 "[5] - Adicionar semestre ao Aluno.\n" +
                  "[6] - Sair.\n" +
                  "Opção: ");
     opcao = int.Parse(Console.ReadLine());
@@ -44,7 +44,15 @@ do
                 {
                     registroAluno = randomRA.Next();
                     registroMatricula = randomRGM.Next();
-                    if(listaAlunos.Count == 0)
+                    
+                    foreach (Aluno a in listaAlunos)
+                    {
+                        if (a.RegistroAluno == registroAluno || a.RegistroMatrícula == registroMatricula)
+                        {
+                            jaCadastrado = true;
+                        }
+                    }
+                    if (!jaCadastrado)
                     {
                         registroAluno = registroAluno;
                         registroMatricula = registroMatricula;
@@ -52,19 +60,9 @@ do
                     }
                     else
                     {
-                        foreach (Aluno a in listaAlunos)
-                        {
-                            if (a.RegistroAluno == registroAluno || a.RegistroMatrícula == registroMatricula)
-                            {
-                                jaCadastrado = true;
-                            }
-                        }
-                        if (!jaCadastrado)
-                        {
-                            registroAluno = registroAluno;
-                            registroMatricula = registroMatricula;
-                        }
+                        jaCadastrado = false;
                     }
+                    
                 }
 
                 Console.Write("Digite seu nome completo: ");
@@ -76,7 +74,7 @@ do
                               "[2] - Recursos Humanos.\n" +
                               "[3] - Análise e Desenvolvimentos de Sistemas. \n" +
                               "[4] - Engenharia Civil.\n" +
-                              "Opção: \n");
+                              "Opção: ");
                 opcaoCurso = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
@@ -125,12 +123,45 @@ do
             Util.exibirListas(listaAlunos, listaEmails);
             break;
         case 3:
+            int contADM, contRH, contADS, contENG;
+            contADM = 0;
+            contRH = 0;
+            contADS = 0;
+            contENG = 0;
+            foreach (Aluno a in listaAlunos)
+            {
+                if (a.Curso.Equals("ADMINISTRAÇÃO"))
+                {
+                    contADM++;
+                }
+                else if (a.Curso.Equals("RECURSOS HUMANOS"))
+                {
+                    contRH++;
+                }
+                else if (a.Curso.Equals("ANÁLISE E DESENVOLVIMENTO DE SISTEMAS"))
+                {
+                    contADS++;
+                }
+                else
+                {
+                    contENG++;
+                }  
+            }
+            Console.WriteLine("===============================================================================================\n" +
+                              "Alunos por curso: \n" +
+                              "===============================================================================================\n" +
+                              "[1] - ADMINISTRAÇÃO:                          {0}\n" +
+                              "[2] - RECURSOS HUMANOS:                       {1}\n" +
+                              "[3] - ANÁLISE E DESENVOLVIMENTO DE SISTEMA:   {2}\n" +
+                              "[4] - ENGENHARIA CIVIL:                       {3}\n" +
+                              "===============================================================================================", contADM, contRH, contADS, contENG);
             break;
         case 4:
             break;
         case 5:
             break;
         case 6:
+            Console.WriteLine("Obrigado por usar o programa.");
             break;
         default:
             break;
@@ -140,6 +171,8 @@ do
     Console.ReadKey();
 
     Console.Clear();
+
+    Console.WriteLine("SAINDO...");
 
 } while (opcao != 6);
 

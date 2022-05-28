@@ -28,7 +28,7 @@ namespace ExercicioCriarEmail
                     {
                         linhaSplit1 = linha1.Split(";");
 
-                        Aluno a = new Aluno(linhaSplit1[0], linhaSplit1[1], Convert.ToInt16(linhaSplit1[2]), Convert.ToInt16(linhaSplit1[3]), Convert.ToDateTime(linhaSplit1[4]), linhaSplit1[5], Convert.ToDateTime(linhaSplit1[6]));
+                        Aluno a = new Aluno(linhaSplit1[0], linhaSplit1[1], Convert.ToInt32(linhaSplit1[2]), Convert.ToInt32(linhaSplit1[3]), Convert.ToDateTime(linhaSplit1[4]), linhaSplit1[5], Convert.ToDateTime(linhaSplit1[6]));
 
                         listaAluno.Add(a);
 
@@ -42,7 +42,7 @@ namespace ExercicioCriarEmail
             // captura o erro - nesse caso não será mostrado e só continuará
             catch (IOException e)
             {
-                //Console.WriteLine("Erro ao ler arquivo: " + e.Message);
+                Console.WriteLine("Erro ao ler arquivo: " + e.Message);
             }
 
             try
@@ -59,7 +59,7 @@ namespace ExercicioCriarEmail
                     {
                         linhaSplit2 = linha2.Split(";");
 
-                        Email e = new Email(linhaSplit2[0], linhaSplit2[1], linhaSplit2[2], Convert.ToInt16(linhaSplit2[3]));
+                        Email e = new Email(linhaSplit2[0], linhaSplit2[1], linhaSplit2[2], Convert.ToInt32(linhaSplit2[3]));
 
                         listaEmail.Add(e);
                     }
@@ -72,12 +72,15 @@ namespace ExercicioCriarEmail
             // captura o erro - nesse caso não será mostrado e só continuará
             catch (IOException e)
             {
-                //Console.WriteLine("Erro ao ler arquivo: " + e.Message);
+                Console.WriteLine("Erro ao ler arquivo: " + e.Message);
             }
 
             // instancia o objeto da classe StreamWriter
             StreamWriter escritor1 = new StreamWriter(nomeArquivoAluno, true); //abre o arquivo para escrita
             StreamWriter escritor2 = new StreamWriter(nomeArquivoEmail, true);
+
+            escritor1.Close();
+            escritor2.Close();
 
         }
 
@@ -90,14 +93,16 @@ namespace ExercicioCriarEmail
             else
             {
                 Console.WriteLine("Mostrando as listas Aluno e E-mail: ");
+                Console.WriteLine("===================================================================================================================");
                 foreach (Aluno a in listaAluno)
                 {
-                    Console.WriteLine("Nome: {0} - RA: {1} - RGM: {2} - Curso: {3} - Data da Matrícula: {4:dd/MM/yyyy} - Data do Término: {5:dd/MM/yyyy}.", a.Nome, a.RegistroAluno, a.RegistroMatrícula, a.Curso, a.DataMatricula, a.DataTermino);
+                    Console.WriteLine("Nome: {0} - RA: {1} - RGM: {2} - Curso: {3} - Data da Matrícula: {4:dd/MM/yyyy} - Data do Término: {5:dd/MM/yyyy}.", a.Nome.ToUpper(), a.RegistroAluno, a.RegistroMatrícula, a.Curso, a.DataMatricula, a.DataTermino);
                     foreach (Email e in listaEmail)
                     {
                         if (e.RegistroMatricula.Equals(a.RegistroMatrícula))
                         {
                             Console.WriteLine("Email: {0}", e.EmailUsuario);
+                            Console.WriteLine("===================================================================================================================");
                         }
                     }
                 }
@@ -114,10 +119,11 @@ namespace ExercicioCriarEmail
                 StreamWriter escritor1 = new StreamWriter(nomeArquivoAluno, true);
                 escritor1.WriteLine(aluno.Nome + ";" + aluno.Sobrenome + ";" + aluno.RegistroAluno + ";" + aluno.RegistroMatrícula + ";" + aluno.DataMatricula + ";" + aluno.Curso + ";" + aluno.DataTermino);
                 escritor1.Flush();
+                escritor1.Close();
             }
             catch (IOException e)
             {
-                //Console.WriteLine("Erro ao gravar o arquivo: " + e.Message);
+                Console.WriteLine("Erro ao gravar o arquivo: " + e.Message);
             }
 
             try
@@ -125,10 +131,11 @@ namespace ExercicioCriarEmail
                 StreamWriter escritor2 = new StreamWriter(nomeArquivoEmail, true);
                 escritor2.WriteLine(email.EmailUsuario + ";" + email.Nome + ";" + email.Curso + ";" + email.RegistroMatricula);
                 escritor2.Flush();
+                escritor2.Close();
             }
             catch (IOException e)
             {
-                //Console.WriteLine("Erro ao gravar o arquivo: " + e.Message);
+                Console.WriteLine("Erro ao gravar o arquivo: " + e.Message);
             }
         }
     }
