@@ -8,11 +8,13 @@ namespace ExercicioCriarEmail
 {
     internal class Email
     {
+        // atributos
         private string emailUsuario;
         private string nome;
         private string curso;
         private int registroMatricula;
 
+        // método construtor
         public Email(string nome, string curso, int registroMatricula)
         {
             this.nome = nome;
@@ -29,6 +31,7 @@ namespace ExercicioCriarEmail
             this.emailUsuario = this.emailUsuario.ToLower();
         }
 
+        // método construtor - sobrecarga
         public Email(string emailUsuario, string nome, string curso, int registroMatricula)
         {
             this.emailUsuario = emailUsuario;
@@ -37,6 +40,7 @@ namespace ExercicioCriarEmail
             this.registroMatricula = registroMatricula;
         }
 
+        // métodos getter e setter
         public string EmailUsuario { get => emailUsuario; }
         public string Nome { get => nome; set => nome = value; }
         public string Curso { get => curso; set => curso = value; }

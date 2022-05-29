@@ -8,11 +8,14 @@ namespace ExercicioCriarEmail
 {
     internal class Util
     {
+        // método estático para conectar ao arquivo
         public static void conectaArquivo(List<Aluno> listaAluno, List<Email> listaEmail)
         {
+            // declaração das variáveis com os nomes dos arquivos
             string nomeArquivoAluno = "ListaAlunos.txt";
             string nomeArquivoEmail = "ListaEmails.txt";
 
+            // tenta realizar a conexão e a leitura do arquivo
             try
             {
                 StreamReader leitor1 = new StreamReader(nomeArquivoAluno);
@@ -36,6 +39,7 @@ namespace ExercicioCriarEmail
 
                 } while (!leitor1.EndOfStream);
 
+                // fecha os leitores
                 leitor1.Close();
 
             }
@@ -45,6 +49,7 @@ namespace ExercicioCriarEmail
                 Console.WriteLine("Erro ao ler arquivo: " + e.Message);
             }
 
+            // tenta conectar no arquivo e realizar a leitura
             try
             {
                 StreamReader leitor2 = new StreamReader(nomeArquivoEmail);
@@ -66,6 +71,7 @@ namespace ExercicioCriarEmail
                     
                 } while (!leitor2.EndOfStream);
 
+                // fecha os leitores
                 leitor2.Close();
 
             }
@@ -76,14 +82,16 @@ namespace ExercicioCriarEmail
             }
 
             // instancia o objeto da classe StreamWriter
-            StreamWriter escritor1 = new StreamWriter(nomeArquivoAluno, true); //abre o arquivo para escrita
+            StreamWriter escritor1 = new StreamWriter(nomeArquivoAluno, true); 
             StreamWriter escritor2 = new StreamWriter(nomeArquivoEmail, true);
 
+            // fecha os escritores
             escritor1.Close();
             escritor2.Close();
 
         }
 
+        // métodos estático para exibir as listas
         public static void exibirListas(List<Aluno> listaAluno, List<Email> listaEmail)
         {
             if(listaAluno.Count == 0  && listaEmail.Count == 0)
@@ -109,11 +117,14 @@ namespace ExercicioCriarEmail
             }
         }
 
+        // método estático para gravar os dados
         public static void gravarDados(Aluno aluno, Email email)
         {
+            // declaração das variáveis com os nomes dos arquivos
             string nomeArquivoAluno = "ListaAlunos.txt";
             string nomeArquivoEmail = "ListaEmails.txt";
 
+            // tenta conectar com o arquivo e realizar a leitura
             try
             {
                 StreamWriter escritor1 = new StreamWriter(nomeArquivoAluno, true);
@@ -121,11 +132,13 @@ namespace ExercicioCriarEmail
                 escritor1.Flush();
                 escritor1.Close();
             }
+            // captura o erro
             catch (IOException e)
             {
                 Console.WriteLine("Erro ao gravar o arquivo: " + e.Message);
             }
 
+            // tenta conectar com o arquivo e realizar a leitura
             try
             {
                 StreamWriter escritor2 = new StreamWriter(nomeArquivoEmail, true);
@@ -133,6 +146,7 @@ namespace ExercicioCriarEmail
                 escritor2.Flush();
                 escritor2.Close();
             }
+            // captura o erro
             catch (IOException e)
             {
                 Console.WriteLine("Erro ao gravar o arquivo: " + e.Message);
