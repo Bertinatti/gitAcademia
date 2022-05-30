@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 /*
- * Escreva a seqüência de atribuições, em forma de programa em C# e no 
+ * 3) Escreva a seqüência de atribuições, em forma de programa em C# e no 
  * Visual Studio, para trocar entre si os valores de duas variáveis A e B.
  */
 
