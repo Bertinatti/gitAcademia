@@ -1,28 +1,25 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 /*
- * 3) Escreva a seqüência de atribuições, em forma de programa em C# e no 
- * Visual Studio, para trocar entre si os valores de duas variáveis A e B.
- */
+ * 4) Faça um programa em C# e no Visual Studio que receba a data na forma DDMMAAAA e imprima na 
+ * forma AAAAMMDD e AAMMDD. Note que o dia, o mês e o ano devem ser lidos em variáveis diferentes.
+ * */
 
-Console.WriteLine("Exercício 3: Escreva a seqüência de atribuições,\n " + "em forma de programa em C# e no Visual Studio, para trocar entre \n" + "si os valores de duas variáveis A e B");
+Console.Write("Exercício 4:  Faça um programa em C# e no Visual Studio que receba a data na forma DDMMAAAA \n e imprima na forma AAAAMMDD e AAMMDD.Note que o dia, o mês e o ano devem ser lidos em \nvariáveis diferentes.");
 
-string s1, s2, tmp;
+int d, m, a;
 
-Console.Write("Digite uma frase qualquer: ");
-s1 = Console.ReadLine();
+Console.Write("Digite o dia (no formato DD): ");
+d = int.Parse(Console.ReadLine());
 
-Console.Write("Digite outra frase qualquer: ");
-s2 = Console.ReadLine();
+Console.Write("Digite o mês (no formato MM): ");
+m = int.Parse(Console.ReadLine());
 
-Console.WriteLine("O conteúdo da variável s1 é: " + s1);
-Console.WriteLine("O conteúdo da variável s2 é: " + s2);
+Console.Write("Digite o ano (no formato AAAA): ");
+a = int.Parse(Console.ReadLine());
 
-Console.WriteLine("Processo de alternância de valores...");
+DateTime dateN = DateTime.Parse("" + d + "/" + m + "/" + a);
+Console.WriteLine("A data formatada em DD/MM/AAAA é: " + (String.Format("{0:dd/MM/yyyy}", dateN)));
 
-tmp = s1;
-s1 = s2;
-s2 = tmp;
-
-Console.WriteLine("O conteúdo da variável s1 é: " + s1);
-Console.WriteLine("O conteúdo da variável s2 é: " + s2);
+DateTime dateI = DateTime.Parse("" + a + "/" + m + "/" + d);
+Console.WriteLine("A data formatada em AA/MM/DD é: " + (String.Format("{0:yy/MM/dd}", dateI)));
