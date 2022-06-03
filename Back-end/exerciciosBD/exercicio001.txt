@@ -1,0 +1,99 @@
+Sistema para gestão de vendas de produtos que serão estocados/alocados em prateleiras. Esses produtos são vendidos por vendedores (com seus dados) e entram em uma venda com data, nota fiscal, quem vendeu e para quem vendeu(cliente).
+
+Modelagem Lógica do Sistema de Vendas
+
+Cliente(codCliente, nome, rua, numero, complemento, cep, cidade, estado, fone)
+    - codCliente será a chave primária
+
+Vendedor(codVendedor, nome, fone, senha)
+    - codVendedor será a chave primária
+
+Prateleira(codPrateleira, localizacao)
+     - codPrateleira será a chave primária
+
+Produto(codProduto, codigoBarras, descricao, codPrateleira)
+    - codPrateleira referencia Prateleira - chave estrangeira
+    - codProduto será a chave primária
+
+Venda(numeroNotaFiscal,dataNotafiscal, codProduto, codVendedor, codCliente)
+    - codProduto referencia Produto - chave estrangeira
+    - codVendedor referencia Vendedor - chave estrangeira
+    - codCliente referencia Cliente - chave estrangeira
+    - numeroNotaFiscal - chave primária
+
+Prateleira (1..1) -------- (1..n) Produto
+    Uma prateleira pode estar vazia ou com n Produtos, mas um Produto só pode estar em uma Prateleira ou fora dela.
+
+Cliente (0..n) -------- (1..n) Produto
+    Um cliente pode comprar 1 ou n Produtos e um Produto pode ser vendido para 0 ou n Clientes, por ser uma relação de cardinalidade n x n, cria-se uma terceira tabela, que no caso será a tabela Vendas.
+
+Cliente (1..n) -------- (1..n) Vendedor
+    Um cliente pode comprar com 1 Vendedor ou n(indo outras vezes) e um Vendedor pode vender para 1 ou n Clientes, por ser uma relação de cardinalidade n x n, cria-se uma terceira tabela, que no caso será a tabela Vendas.
+
+Vendedor (0..n) -------- (1..n) Produto
+    Um vendedor pode vender 1 ou n Produtos e um Produto pode ser vendido por 0 ou n Vendedores, por ser uma relação de cardinalidade n x n, cria-se uma terceira tabela, que no caso será a tabela Vendas.
+
+Entidade = classe
+Atributo/Coluna se for uma chave estrangeira, no diagrama fica subentendido
+Relacionamento indica quem visita quem (chave primária visita outra entidade como chave estrangeira)
+    - Uma chave estrangeira deve ser uma chave primária na sua entidade/classe de origem
+Cardinalidade: mostra como se dará a visita (quem terá a chave estrangeira)
+
+public class Prateleira{
+    private int codPrateleira;
+    private string localizacao;
+
+    // métodos construtores
+
+    // métodos getters e setters
+}
+
+public class Produto{
+    private int codProduto;
+    private string codigoBarras
+    private string descricao;
+    private Prateleira prateleira;
+
+    // métodos construtores
+
+    // métodos getters e setters
+}
+
+public class Vendedor{
+    private int codVendedor;
+    private string nome;
+    private int fone;
+    private string senha;
+
+    // métodos construtores
+
+    // métodos getters e setters
+}
+
+public class Cliente{
+    private int codCliente;
+    private string nome;
+    private string rua;
+    private int numero;
+    private string complemento;
+    private int cep;
+    private string cidade;
+    private string estado;
+    private int fone;
+
+    // métodos construtores
+
+    // métodos getters e setters
+}
+
+public class Vendas{
+    private int numeroNotaFiscal;
+    private DateTime dataNotafiscal;
+    private Produto produto;
+    private Vendedor vendedor;
+    private Cliente cliente;
+
+    // métodos construtores
+
+    // métodos getters e setters
+}
