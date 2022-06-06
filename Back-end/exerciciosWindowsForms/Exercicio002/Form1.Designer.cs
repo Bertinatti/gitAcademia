@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroUsuario));
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.tbNome = new System.Windows.Forms.TextBox();
@@ -42,20 +44,27 @@
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.mtbTelefone = new System.Windows.Forms.MaskedTextBox();
             this.mtbCPF = new System.Windows.Forms.MaskedTextBox();
+            this.btnMostrarEsconder = new System.Windows.Forms.Button();
+            this.imageListMostrarEsconder = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // btnSalvar
             // 
+            this.btnSalvar.BackColor = System.Drawing.Color.Transparent;
+            this.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvar.Location = new System.Drawing.Point(22, 177);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(241, 23);
             this.btnSalvar.TabIndex = 7;
             this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnLimpar
             // 
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnLimpar.Location = new System.Drawing.Point(277, 177);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(241, 23);
@@ -127,8 +136,9 @@
             // 
             this.tbSenha.Location = new System.Drawing.Point(22, 136);
             this.tbSenha.Name = "tbSenha";
-            this.tbSenha.Size = new System.Drawing.Size(406, 20);
+            this.tbSenha.Size = new System.Drawing.Size(372, 20);
             this.tbSenha.TabIndex = 5;
+            this.tbSenha.UseSystemPasswordChar = true;
             // 
             // cbTipoUsuario
             // 
@@ -175,11 +185,40 @@
             this.mtbCPF.TabIndex = 6;
             this.mtbCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
+            // btnMostrarEsconder
+            // 
+            this.btnMostrarEsconder.BackColor = System.Drawing.Color.Transparent;
+            this.btnMostrarEsconder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarEsconder.BackgroundImage")));
+            this.btnMostrarEsconder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMostrarEsconder.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnMostrarEsconder.FlatAppearance.BorderSize = 0;
+            this.btnMostrarEsconder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnMostrarEsconder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnMostrarEsconder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMostrarEsconder.ForeColor = System.Drawing.Color.Transparent;
+            this.btnMostrarEsconder.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnMostrarEsconder.Location = new System.Drawing.Point(400, 136);
+            this.btnMostrarEsconder.Name = "btnMostrarEsconder";
+            this.btnMostrarEsconder.Size = new System.Drawing.Size(28, 20);
+            this.btnMostrarEsconder.TabIndex = 14;
+            this.btnMostrarEsconder.UseVisualStyleBackColor = false;
+            this.btnMostrarEsconder.Click += new System.EventHandler(this.btnMostrarEsconder_Click);
+            // 
+            // imageListMostrarEsconder
+            // 
+            this.imageListMostrarEsconder.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListMostrarEsconder.ImageStream")));
+            this.imageListMostrarEsconder.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListMostrarEsconder.Images.SetKeyName(0, "mostrar_32px.png");
+            this.imageListMostrarEsconder.Images.SetKeyName(1, "esconder_32px.png");
+            // 
             // frmCadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(544, 223);
+            this.Controls.Add(this.btnMostrarEsconder);
             this.Controls.Add(this.mtbCPF);
             this.Controls.Add(this.mtbTelefone);
             this.Controls.Add(this.lblTipoUsuario);
@@ -194,7 +233,12 @@
             this.Controls.Add(this.tbNome);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnSalvar);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmCadastroUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Usuário";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -217,6 +261,8 @@
         private System.Windows.Forms.Label lblTipoUsuario;
         private System.Windows.Forms.MaskedTextBox mtbTelefone;
         private System.Windows.Forms.MaskedTextBox mtbCPF;
+        private System.Windows.Forms.Button btnMostrarEsconder;
+        private System.Windows.Forms.ImageList imageListMostrarEsconder;
     }
 }
 

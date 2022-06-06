@@ -35,13 +35,33 @@ namespace Exercicio002
 
         public void MostrarDados()
         {
-            MessageBox.Show($"Nome: {this.nome} \n" +
+            string mostrarStatus;
+            string tipoUsuario;
+            if (this.status == true)
+            {
+                mostrarStatus = "Ativo";
+            }
+            else
+            {
+                mostrarStatus = "Inativo";
+            }
+
+            if (this.tipo == 0)
+            {
+                tipoUsuario = "Usuário padrão";
+            }
+            else
+            {
+                tipoUsuario = "Administrador";
+            }
+
+            MessageBox.Show($"Nome do usuário: {this.nome} \n" +
                             $"Telefone: {this.telefone}\n" +
                             $"CPF: {this.cpf}\n" +
                             $"Login: {this.login}\n" +
                             $"Senha: {this.senha}\n" +
-                            $"Status: {this.status}\n" +
-                            $"tipos: {this.tipo}");
+                            $"Nível do usuário: {tipoUsuario}\n" +
+                            $"Status: { mostrarStatus}");
         }
 
         public string Nome { get => nome; set => nome = value; }

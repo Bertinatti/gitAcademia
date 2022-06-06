@@ -15,7 +15,10 @@ namespace Exercicio002
         public frmCadastroUsuario()
         {
             InitializeComponent();
+            btnMostrarEsconder.BackgroundImage = imageListMostrarEsconder.Images[0];
         }
+
+        bool trocaImagem = false;
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -36,8 +39,8 @@ namespace Exercicio002
             nome = tbNome.Text.ToUpper();
             login = tbLogin.Text;
             senha = tbSenha.Text;
-            telefone = mtbCPF.Text;
-            cpf = mtbTelefone.Text;
+            telefone = mtbTelefone.Text;
+            cpf = mtbCPF.Text;
 
             if (cbTipoUsuario.Text == "Administrador")
             {
@@ -48,6 +51,22 @@ namespace Exercicio002
 
             usuario.MostrarDados();
 
+        }
+
+        private void btnMostrarEsconder_Click(object sender, EventArgs e)
+        {
+            if (trocaImagem == false)
+            {
+                btnMostrarEsconder.BackgroundImage = imageListMostrarEsconder.Images[1];
+                trocaImagem = true;
+                tbSenha.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                btnMostrarEsconder.BackgroundImage = imageListMostrarEsconder.Images[0];
+                trocaImagem = false;
+                tbSenha.UseSystemPasswordChar = true;
+            }
         }
     }
 }
