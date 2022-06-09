@@ -12,6 +12,8 @@ namespace Exercicio001
 {
     public partial class frmCadastroUsuario : Form
     {
+        static List<Carro> listaCarros = new List<Carro>();
+        
         public frmCadastroUsuario()
         {
             InitializeComponent();
@@ -26,6 +28,8 @@ namespace Exercicio001
                 checkListBoxOpcionais.SetItemChecked(indicesChecked, false);
             }
             comboBoxPortas.ResetText();
+
+            dgAutomoveis.Rows.Clear();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -84,15 +88,55 @@ namespace Exercicio001
                     portas = 5;
                 }
             }
-            MessageBox.Show("Modelo: " + txtBoxModelo.Text.ToUpper() + "\n" +
-                            "Fabricante: " + txtBoxFabricante.Text.ToUpper() + "\n" +
-                            "Opcionais: " + opcionais.ToUpper() + "\n" +
-                            "Portas: " + comboBoxPortas.Text.ToUpper());
+
+            //MessageBox.Show("Modelo: " + txtBoxModelo.Text.ToUpper() + "\n" +
+            //                "Fabricante: " + txtBoxFabricante.Text.ToUpper() + "\n" +
+            //                "Opcionais: " + opcionais.ToUpper() + "\n" +
+            //                "Portas: " + comboBoxPortas.Text.ToUpper());
 
             Carro carro = new Carro(txtBoxModelo.Text.ToUpper(), txtBoxFabricante.Text.ToUpper(), ar, dh, abs, ab, ve, portas);
 
-            carro.MostrarDadosCarro();
+            //carro.MostrarDadosCarro();
 
+            listaCarros.Add(carro);
+
+            mostrarListaCarros();
+
+            // método 1 - mostrar no dataGridView
+            //dgAutomoveis.Rows.Add(txtBoxModelo.Text.ToUpper(), txtBoxFabricante.Text.ToUpper(), ar, dh, abs, ab, ve, portas);
+
+            // método 2 - mostrar no dataGridView
+            dgAutomoveis.Rows.Clear();
+
+            foreach(Carro c in listaCarros)
+            {
+                dgAutomoveis.Rows.Add(c.Modelo, c.Fabricante, c.Ar, c.Dh, c.Abs, c.Airbag, c.Ve, c.Portas);
+            }
+        }
+        
+        static void mostrarListaCarros()
+        {
+            foreach  (Carro c in listaCarros)
+            {
+                MessageBox.Show("Modelo do carro: " + c.Modelo +
+                                "\nFabricante do carro: " + c.Fabricante +
+                                "\nAr-condicionado: " + c.Ar +
+                                "\nDireção-hidráulica: " + c.Dh +
+                                "\nAbs: " + c.Abs +
+                                "\nAirbag: " + c.Airbag +
+                                "\nVidro-elétrico: " + c.Ve +
+                                "\nNúmero de portas: " + c.Portas);
+            }
+        }
+
+        private void btnCarregarLista_Click(object sender, EventArgs e)
+        {
+            dgAutomoveis.Rows.Clear();
+
+            foreach (Carro c in listaCarros)
+            {
+                dgAutomoveis.Rows.Add(c.Modelo, c.Fabricante, c.Ar, c.Dh, c.Abs, c.Airbag, c.Ve, c.Portas);
+            }
         }
     }
 }

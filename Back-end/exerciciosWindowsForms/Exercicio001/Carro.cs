@@ -32,14 +32,14 @@ namespace Exercicio001
 
         public void MostrarDadosCarro()
         {
-            MessageBox.Show("Modelo do carro: " + this.modelo + "\n" +
-                            "Fabricante do carro: " + this.fabricante + "\n" +
-                            "Ar-condicionado: " + this.ar + "\n" +
-                            "Direção-hidráulica: " + this.dh + "\n" +
-                            "Abs: " + this.abs + "\n" +
-                            "Airbag: " + this.airbag + "\n" +
-                            "Vidro-elétrico: " + this.ve + "\n" +
-                            "Número de portas: " + this.portas + "\n");
+            MessageBox.Show("Modelo do carro: " + this.modelo +
+                            "\nFabricante do carro: " + this.fabricante + 
+                            "\nAr-condicionado: " + this.ar + 
+                            "\nDireção-hidráulica: " + this.dh +
+                            "\nAbs: " + this.abs +
+                            "\nAirbag: " + this.airbag +
+                            "\nVidro-elétrico: " + this.ve +
+                            "\nNúmero de portas: " + this.portas);
         }
 
         public string Modelo { get => modelo; set => modelo = value; }
