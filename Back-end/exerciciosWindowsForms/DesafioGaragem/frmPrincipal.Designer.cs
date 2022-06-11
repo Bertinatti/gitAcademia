@@ -51,14 +51,18 @@
             this.dgTempoPermanencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgValoCobrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSaidaVeiculos = new System.Windows.Forms.Label();
+            this.lblVagas = new System.Windows.Forms.Label();
+            this.lblNumeroVagas = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEntradaVeiculos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaidaVeiculos)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEntrada
             // 
-            this.btnEntrada.Location = new System.Drawing.Point(16, 456);
+            this.btnEntrada.Location = new System.Drawing.Point(16, 480);
             this.btnEntrada.Name = "btnEntrada";
             this.btnEntrada.Size = new System.Drawing.Size(146, 23);
             this.btnEntrada.TabIndex = 2;
@@ -73,12 +77,13 @@
             // 
             // btnSaida
             // 
-            this.btnSaida.Location = new System.Drawing.Point(168, 456);
+            this.btnSaida.Location = new System.Drawing.Point(168, 480);
             this.btnSaida.Name = "btnSaida";
             this.btnSaida.Size = new System.Drawing.Size(146, 23);
             this.btnSaida.TabIndex = 3;
             this.btnSaida.Text = "Saída";
             this.btnSaida.UseVisualStyleBackColor = true;
+            this.btnSaida.Click += new System.EventHandler(this.btnSaida_Click);
             // 
             // panel1
             // 
@@ -153,7 +158,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(320, 456);
+            this.btnLimpar.Location = new System.Drawing.Point(320, 480);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(146, 23);
             this.btnLimpar.TabIndex = 12;
@@ -177,6 +182,7 @@
             this.dgEntradaVeiculos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgEntradaVeiculos.Size = new System.Drawing.Size(450, 150);
             this.dgEntradaVeiculos.TabIndex = 13;
+            this.dgEntradaVeiculos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEntradaVeiculos_CellContentClick);
             // 
             // dgPlacaVeiculoEntrada
             // 
@@ -218,11 +224,13 @@
             this.dgPlacaVeiculoSaida,
             this.dgTempoPermanencia,
             this.dgValoCobrado});
+            this.dgSaidaVeiculos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgSaidaVeiculos.Location = new System.Drawing.Point(16, 280);
             this.dgSaidaVeiculos.Name = "dgSaidaVeiculos";
             this.dgSaidaVeiculos.ReadOnly = true;
             this.dgSaidaVeiculos.Size = new System.Drawing.Size(450, 150);
             this.dgSaidaVeiculos.TabIndex = 15;
+            this.dgSaidaVeiculos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSaidaVeiculos_CellContentClick);
             // 
             // dgPlacaVeiculoSaida
             // 
@@ -255,12 +263,43 @@
             this.lblSaidaVeiculos.TabIndex = 16;
             this.lblSaidaVeiculos.Text = "Histórico de veículos:";
             // 
+            // lblVagas
+            // 
+            this.lblVagas.AutoSize = true;
+            this.lblVagas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVagas.Location = new System.Drawing.Point(192, 6);
+            this.lblVagas.Name = "lblVagas";
+            this.lblVagas.Size = new System.Drawing.Size(50, 16);
+            this.lblVagas.TabIndex = 17;
+            this.lblVagas.Text = "Vagas:";
+            // 
+            // lblNumeroVagas
+            // 
+            this.lblNumeroVagas.AutoSize = true;
+            this.lblNumeroVagas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroVagas.Location = new System.Drawing.Point(240, 6);
+            this.lblNumeroVagas.Name = "lblNumeroVagas";
+            this.lblNumeroVagas.Size = new System.Drawing.Size(21, 16);
+            this.lblNumeroVagas.TabIndex = 18;
+            this.lblNumeroVagas.Text = "00";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lblVagas);
+            this.panel2.Controls.Add(this.lblNumeroVagas);
+            this.panel2.Location = new System.Drawing.Point(16, 439);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(450, 32);
+            this.panel2.TabIndex = 19;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(482, 491);
+            this.ClientSize = new System.Drawing.Size(482, 519);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblSaidaVeiculos);
             this.Controls.Add(this.dgSaidaVeiculos);
             this.Controls.Add(this.lblVeiculosEntrada);
@@ -283,6 +322,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEntradaVeiculos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaidaVeiculos)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,6 +351,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgTempoPermanencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgValoCobrado;
         private System.Windows.Forms.Label lblSaidaVeiculos;
+        private System.Windows.Forms.Label lblVagas;
+        private System.Windows.Forms.Label lblNumeroVagas;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

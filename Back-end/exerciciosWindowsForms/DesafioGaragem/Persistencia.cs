@@ -9,6 +9,10 @@ namespace DesafioGaragem
 {
     internal class Persistencia
     {
+        /// <summary>
+        /// Método para ler os dados persistidos no arquivo, com o histórico de todos os veículos que estão usando o sistema.
+        /// </summary>
+        /// <param name="lista">Lista com os veículos que estão usando o sistema.</param>
         public static void lerArquivoVeiculosEntrada(List<Veiculo> lista)
         {
             string nomeArquivo = "veiculosEntrada.dat";
@@ -24,11 +28,11 @@ namespace DesafioGaragem
                 {
                     linha = leitor.ReadLine();
 
-                    if (linha != null)
+                    if (linha != null && linha != "")
                     {
                         linhaSplit = linha.Split(';');
 
-                        Veiculo veiculo = new Veiculo(linhaSplit[0], Convert.ToDateTime(linhaSplit[1]), Convert.ToDateTime(linhaSplit[2]));
+                        Veiculo veiculo = new Veiculo(linhaSplit[0], linhaSplit[1], linhaSplit[2]);
 
                         lista.Add(veiculo);
 
@@ -48,7 +52,10 @@ namespace DesafioGaragem
             StreamWriter escritor = new StreamWriter(nomeArquivo, true);
             escritor.Close();
         }
-
+        /// <summary>
+        /// Método para ler os dados persistidos no arquivo, com o histórico de todos os veículos que utilizaram o sistema.
+        /// </summary>
+        /// <param name="lista">Lista com os veículos que usaram o sistema.</param>
         public static void lerArquivoVeiculosSaida(List<Veiculo> lista)
         {
             string nomeArquivo = "veiculosSaida.dat";
@@ -64,11 +71,11 @@ namespace DesafioGaragem
                 {
                     linha = leitor.ReadLine();
 
-                    if (linha != null)
+                    if (linha != null && linha != "")
                     {
                         linhaSplit = linha.Split(';');
 
-                        Veiculo veiculo = new Veiculo(linhaSplit[0], int.Parse(linhaSplit[1]), double.Parse(linhaSplit[2]));
+                        Veiculo veiculo = new Veiculo(linhaSplit[0],linhaSplit[1], linhaSplit[2], int.Parse(linhaSplit[3]), double.Parse(linhaSplit[4]));
 
                         lista.Add(veiculo);
 
@@ -88,7 +95,10 @@ namespace DesafioGaragem
             StreamWriter escritor = new StreamWriter(nomeArquivo, true);
             escritor.Close();
         }
-
+        /// <summary>
+        /// Método para persistir os dados no arquivo de veículos que estão utilizando o sistema.
+        /// </summary>
+        /// <param name="veiculo">Objeto da classe veículo com os dados de entrada</param>
         public static void gravarArquivoVeiculosEntrada(Veiculo veiculo)
         {
             string nomeArquivo = "veiculosEntrada.dat";
@@ -107,14 +117,39 @@ namespace DesafioGaragem
             }
 
         }
+        /// <summary>
+        /// Método para persistir os dados no arquivo de veículos que utilizaram o sistema.
+        /// </summary>
+        /// <param name="veiculo">Objeto da classe veículo com os dados de saída.</param>
         public static void gravarArquivoVeiculosSaida(Veiculo veiculo)
+        {
+            string nomeArquivo = "veiculosSaida.dat";
+
+            try
+            {
+                StreamWriter escritor = new StreamWriter(nomeArquivo, true);
+                escritor.WriteLine(veiculo.PlacaVeiculo + ";" + veiculo.DataEntrada + ";" + veiculo.HoraEntrada + ";" + veiculo.TempoPermanencia + ";" + veiculo.ValorCobrado);
+                escritor.Flush();
+                escritor.Close();
+            }
+
+            catch (IOException e)
+            {
+                Console.WriteLine("Erro ao gravar o arquivo: " + e.Message);
+            }
+
+        }
+        /// <summary>
+        /// Método estático para limpar o arquivo de entrada quando o sistema se encontrar vazio.
+        /// </summary>
+        public static void limparArquivoVeiculosEntrada()
         {
             string nomeArquivo = "veiculosEntrada.dat";
 
             try
             {
-                StreamWriter escritor = new StreamWriter(nomeArquivo, true);
-                escritor.WriteLine(veiculo.PlacaVeiculo + ";" + veiculo.TempoPermanencia + ";" + veiculo.ValorCobrado);
+                StreamWriter escritor = new StreamWriter(nomeArquivo);
+                escritor.WriteLine("");
                 escritor.Flush();
                 escritor.Close();
             }
