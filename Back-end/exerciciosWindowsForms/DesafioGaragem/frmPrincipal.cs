@@ -44,6 +44,50 @@ namespace DesafioGaragem
             tbPlacaVeiculo.Text = "";
             mtbHora.Text = "";
         }
+        /// <summary>
+        /// Método para verificar os campos de entrada.
+        /// </summary>
+        /// <param name="veiculoNaGaragem">Parâmetro retorno do método da classe veículo.</param>
+        /// <param name="vagasNaGaragem">Parâmetro retorno do método da classe veículo.</param>
+        /// <param name="horarioFuncionamento">Parâmetro retorno do método da classe veículo.</param>
+        private void verificaCamposEntrada(bool veiculoNaGaragem, bool vagasNaGaragem, bool horarioFuncionamento)
+        {
+            if (veiculoNaGaragem == true && vagasNaGaragem == false && horarioFuncionamento == false)
+            {
+                MessageBox.Show("A placa digitada já está estacionada na garagem.\nEstamos sem vagas e fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+            else if (veiculoNaGaragem == true && vagasNaGaragem == false)
+            {
+                MessageBox.Show("A placa digitada já está estacionada na garagem.\nEstamos sem vagas na garagem.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+            else if (veiculoNaGaragem == true && horarioFuncionamento == false)
+            {
+                MessageBox.Show("A placa digitada já está estacionada na garagem.\nEstamos fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+            else if (vagasNaGaragem == false && horarioFuncionamento == false)
+            {
+                MessageBox.Show("Estamos sem vagas e fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+            else if (veiculoNaGaragem == true)
+            {
+                MessageBox.Show("A placa digitada já está estacionada na garagem.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+            else if (vagasNaGaragem == false)
+            {
+                MessageBox.Show("Estamos sem vagas na garagem.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+            else if (horarioFuncionamento == false)
+            {
+                MessageBox.Show("Estamos fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                limparCampos();
+            }
+        }
         public frmPrincipal()
         {
             InitializeComponent();
@@ -79,42 +123,7 @@ namespace DesafioGaragem
                     Persistencia.gravarArquivoVeiculosEntrada(new Veiculo(tbPlacaVeiculo.Text, Veiculo.gerarData(), mtbHora.Text));
                     limparCampos();
                 }
-                else if(veiculoNaGaragem == true && vagasNaGaragem == false && horarioFuncionamento == false)
-                {
-                    MessageBox.Show("A placa digitada já está estacionada na garagem.\nEstamos sem vagas e fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparCampos();
-                }
-                else if(veiculoNaGaragem == true && vagasNaGaragem == false)
-                {
-                    MessageBox.Show("A placa digitada já está estacionada na garagem.\nEstamos sem vagas na garagem.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparCampos();
-                }
-                else if(veiculoNaGaragem == true && horarioFuncionamento == false)
-                {
-                    MessageBox.Show("A placa digitada já está estacionada na garagem.\nEstamos fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparCampos();
-                }
-                else if(vagasNaGaragem == false && horarioFuncionamento == false)
-                {
-                    MessageBox.Show("Estamos sem vagas e fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparCampos();
-                }
-                else if(veiculoNaGaragem == true)
-                {
-                    MessageBox.Show("A placa digitada já está estacionada na garagem.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparCampos();
-                }
-                else if(vagasNaGaragem == false)
-                {
-                    MessageBox.Show("Estamos sem vagas na garagem.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparCampos();
-                }
-                else
-                {
-                    MessageBox.Show("Estamos fora do horario de funcionamento.", "Erro - SIGA AS INSTRUÇÕES", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparCampos();
-                }
-                
+                verificaCamposEntrada(veiculoNaGaragem, vagasNaGaragem, horarioFuncionamento);         
             }
         }
 
@@ -143,7 +152,7 @@ namespace DesafioGaragem
                 MessageBox.Show("Digite uma hora válida, no padrão europeu de 24 horas com o formato - HORAS:MINUTOS.", "Erro - HORA INVÁLIDA.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 limparCampos();
             }
-            if (tbPlacaVeiculo.Text.Equals("") || mtbHora.Text.Equals(""))
+            else if (tbPlacaVeiculo.Text.Equals("") || mtbHora.Text.Equals(""))
             {
                 MessageBox.Show("Digite os campos corretamente.", "Erro - CAMPOS EM BRANCO.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -185,12 +194,10 @@ namespace DesafioGaragem
 
             }
         }
-
         private void dgEntradaVeiculos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             tbPlacaVeiculo.Text = dgEntradaVeiculos.CurrentRow.Cells[0].Value.ToString();
         }
-
         private void dgSaidaVeiculos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             tbPlacaVeiculo.Text = dgSaidaVeiculos.CurrentRow.Cells[0].Value.ToString();
