@@ -118,7 +118,7 @@ namespace DesafioGaragem
             string[] horaMinutoSplit = horaMinuto.Split(':');
             int hora = int.Parse(horaMinutoSplit[0]);
             int minuto = int.Parse(horaMinutoSplit[1]);
-            if (hora >= 00 && hora <= 24 && minuto >= 00 && minuto <= 59)
+            if (hora >= 00 && hora <= 23 && minuto >= 00 && minuto <= 59)
             {
                 return true;
             }
