@@ -54,6 +54,8 @@
             this.lblVagas = new System.Windows.Forms.Label();
             this.lblNumeroVagas = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
+            this.btnConfiguracao = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEntradaVeiculos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaidaVeiculos)).BeginInit();
@@ -90,16 +92,16 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblHora);
             this.panel1.Controls.Add(this.lblDia);
-            this.panel1.Location = new System.Drawing.Point(371, 14);
+            this.panel1.Location = new System.Drawing.Point(311, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(95, 51);
+            this.panel1.Size = new System.Drawing.Size(155, 22);
             this.panel1.TabIndex = 6;
             // 
             // lblHora
             // 
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.Location = new System.Drawing.Point(21, 6);
+            this.lblHora.Location = new System.Drawing.Point(11, 2);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(51, 16);
             this.lblHora.TabIndex = 0;
@@ -109,7 +111,7 @@
             // 
             this.lblDia.AutoSize = true;
             this.lblDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDia.Location = new System.Drawing.Point(12, 26);
+            this.lblDia.Location = new System.Drawing.Point(70, 2);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(42, 16);
             this.lblDia.TabIndex = 1;
@@ -151,9 +153,10 @@
             this.mtbHora.Location = new System.Drawing.Point(205, 33);
             this.mtbHora.Mask = "00:00";
             this.mtbHora.Name = "mtbHora";
-            this.mtbHora.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.mtbHora.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mtbHora.Size = new System.Drawing.Size(100, 22);
             this.mtbHora.TabIndex = 11;
+            this.mtbHora.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtbHora.ValidatingType = typeof(System.DateTime);
             // 
             // btnLimpar
@@ -286,12 +289,31 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnConfiguracao);
             this.panel2.Controls.Add(this.lblVagas);
             this.panel2.Controls.Add(this.lblNumeroVagas);
             this.panel2.Location = new System.Drawing.Point(16, 439);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(450, 32);
             this.panel2.TabIndex = 19;
+            // 
+            // imageListIcons
+            // 
+            this.imageListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListIcons.ImageStream")));
+            this.imageListIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListIcons.Images.SetKeyName(0, "icone_configuracao.png");
+            // 
+            // btnConfiguracao
+            // 
+            this.btnConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfiguracao.BackgroundImage")));
+            this.btnConfiguracao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnConfiguracao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguracao.Location = new System.Drawing.Point(409, -1);
+            this.btnConfiguracao.Name = "btnConfiguracao";
+            this.btnConfiguracao.Size = new System.Drawing.Size(40, 32);
+            this.btnConfiguracao.TabIndex = 20;
+            this.btnConfiguracao.UseVisualStyleBackColor = true;
+            this.btnConfiguracao.Click += new System.EventHandler(this.btnConfiguracao_Click);
             // 
             // frmPrincipal
             // 
@@ -318,6 +340,7 @@
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GARAGEM - Entrada e saída de veículos.";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPrincipal_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEntradaVeiculos)).EndInit();
@@ -354,6 +377,8 @@
         private System.Windows.Forms.Label lblVagas;
         private System.Windows.Forms.Label lblNumeroVagas;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ImageList imageListIcons;
+        private System.Windows.Forms.Button btnConfiguracao;
     }
 }
 

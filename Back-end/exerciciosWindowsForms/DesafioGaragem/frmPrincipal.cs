@@ -125,6 +125,7 @@ namespace DesafioGaragem
                 }
                 verificaCamposEntrada(veiculoNaGaragem, vagasNaGaragem, horarioFuncionamento);         
             }
+            tbPlacaVeiculo.Focus();
         }
 
         private void timerHoras_Tick(object sender, EventArgs e)
@@ -139,6 +140,7 @@ namespace DesafioGaragem
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             limparCampos();
+            tbPlacaVeiculo.Focus();
         }
 
         List<Veiculo> listaVeiculosEntrada = new List<Veiculo>();
@@ -193,6 +195,7 @@ namespace DesafioGaragem
                 }
 
             }
+            tbPlacaVeiculo.Focus();
         }
         private void dgEntradaVeiculos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -201,6 +204,17 @@ namespace DesafioGaragem
         private void dgSaidaVeiculos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             tbPlacaVeiculo.Text = dgSaidaVeiculos.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void btnConfiguracao_Click(object sender, EventArgs e)
+        {
+            frmConfiguracaoGaragem frmConfig = new frmConfiguracaoGaragem();
+            frmConfig.ShowDialog();
+        }
+
+        private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
