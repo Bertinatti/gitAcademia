@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Cores capturadas do projeto: https://codepen.io/umbertojunior/pen/LOGbow */
+:root{
+	--bg-preto:rgb(0,0,0);
+    --bg-branco:rgb(255,255,255);
+	--nao-metal:rgb(180,210,100);
+	--gas-nobre:rgb(100,180,225);
+	--metal-alcalino:rgb(245,200,100);
+	--metal-alcalino-terroso:rgb(240,230,90);
+	--semimetal:rgb(110,200,190);
+	--halogenio:rgb(170,225,255);
+	--outros-metais:rgb(190,210,210);
+	--metal-transicao:rgb(245,175,175);
+	--lantanideo:rgb(150,225,225);
+	--actinidio:rgb(230,190,220);
+}
+
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+    color:var(--bg-branco);
+    text-align: center;
+    background-color: var(--bg-branco);
+}
+
+/* Cores dos elementos */
+.nao-metal{
+    color: var(--nao-metal);
+}
+.gas-nobre{
+    color:var(--gas-nobre);
+}
+.metal-alcalino{
+    color: var(--metal-alcalino);
+}
+.metal-alcalino-terroso{
+    color: var(--metal-alcalino-terroso);
+}
+.semi-metal{
+    color: var(--semimetal);
+}
+.halogenio{
+    color:var(--halogenio);
+}
+.outros-metais{
+    color: var(--outros-metais);
+}
+.metal-transicao{
+    color: var(--metal-transicao);
+}
+.lantanideo{
+    color: var(--lantanideo);
+}
+.actinideo{
+    color: var(--actinidio);
+}
+.bg-preto{
+    color: var(--bg-preto);
+}
+main{
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--bg-preto);
+    display: flex;
+}
+.container{
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--bg-preto);
+    display: flex;
+    justify-content: center;
+}
+.tabela-periodica{
+    display: flex;
+    max-width: 960px;
+    flex-direction: column;
+}
+h1{
+    margin:15px;
+	font-size:36px;
+	font-weight:100;
+	text-transform:uppercase;
+    letter-spacing: 0.5px;
+    justify-content: center;
+}
+
+h2{
+    font-size: 20px;
+}
+
+p{
+    font-size: 12px;
+}
+
+section{
+	height: 80px;
+    width: 80px;
+	background:var(--bg-preto);	
+	border:2px solid;
+	border-radius:5px;	
+	line-height:1.25;
+    margin-top: 4px;
+    margin-left: 4px;
+	position:relative;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+}
+
+span{
+	font-size:8px;
+	position:absolute;
+	top:5px;
+	right:8px;	
+}
