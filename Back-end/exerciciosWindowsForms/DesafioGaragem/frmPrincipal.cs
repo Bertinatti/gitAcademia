@@ -33,7 +33,21 @@ namespace DesafioGaragem
             dgSaidaVeiculos.Rows.Clear();
             foreach (Veiculo v in lista)
             {
-                dgSaidaVeiculos.Rows.Add(v.PlacaVeiculo, v.TempoPermanencia, v.ValorCobrado);
+                dgSaidaVeiculos.Rows.Add(v.PlacaVeiculo, v.TempoPermanencia, "R$ " + v.ValorCobrado.ToString("F"));
+            }
+        }
+        /// <summary>
+        /// Método para popular os valores de configuração da garagem.
+        /// </summary>
+        /// <param name="lista">Lista com os dados da configuração da garagem.</param>
+        /// <param name="numeroVagas">Valores inteiro do número de vagas.</param>
+        /// <param name="preco">Preço da hora da estadia da garagem.</param>
+        private void popularListaConfiguracaoGaragem(List<Garagem> lista)
+        {
+            foreach (Garagem g in lista)
+            {
+                numeroVagas = g.Vagas;
+                preco = g.PrecoCobrado;
             }
         }
         /// <summary>
@@ -95,9 +109,10 @@ namespace DesafioGaragem
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
             Persistencia.lerArquivoVeiculosEntrada(listaVeiculosEntrada);
             Persistencia.lerArquivoVeiculosSaida(listaVeiculosSaida);
+            Persistencia.lerArquivoConfiguracaoGaragem(listaGaragem);
             popularDataGridEntrada(listaVeiculosEntrada);
             popularDataGridSaida(listaVeiculosSaida);
-
+            popularListaConfiguracaoGaragem(listaGaragem);
         }
         private void btnEntrada_Click(object sender, EventArgs e)
         {
@@ -114,7 +129,7 @@ namespace DesafioGaragem
             else
             {
                 bool veiculoNaGaragem = Veiculo.verificaGaragem(tbPlacaVeiculo.Text, listaVeiculosEntrada);
-                bool vagasNaGaragem = Veiculo.verificaVagasGaragem(listaVeiculosEntrada);
+                bool vagasNaGaragem = Veiculo.verificaVagasGaragem(listaVeiculosEntrada, numeroVagas);
                 bool horarioFuncionamento = Veiculo.verificaHoraFuncionamento(mtbHora.Text);
                 if (veiculoNaGaragem == false && vagasNaGaragem == true && horarioFuncionamento == true)
                 {
@@ -132,8 +147,8 @@ namespace DesafioGaragem
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
             lblDia.Text = DateTime.Now.GetDateTimeFormats().First().ToString();
-            int vagas = 50;
             int contaColuna = int.Parse(dgEntradaVeiculos.RowCount.ToString());
+            int vagas = numeroVagas;
             lblNumeroVagas.Text = Convert.ToString(vagas - contaColuna);
         }
 
@@ -142,10 +157,6 @@ namespace DesafioGaragem
             limparCampos();
             tbPlacaVeiculo.Focus();
         }
-
-        List<Veiculo> listaVeiculosEntrada = new List<Veiculo>();
-        List<Veiculo> listaVeiculosSaida = new List<Veiculo>();
-
         private void btnSaida_Click(object sender, EventArgs e)
         {
             bool validarHora = Veiculo.validaHora(mtbHora.Text);
@@ -165,7 +176,7 @@ namespace DesafioGaragem
                 {
                     int posicao = Veiculo.localizaNaLista(tbPlacaVeiculo.Text, listaVeiculosEntrada);
                     Veiculo veiculoTMP = listaVeiculosEntrada[posicao];
-                    veiculoTMP.realizarCobranca(mtbHora.Text);
+                    veiculoTMP.realizarCobranca(mtbHora.Text, preco);
                     listaVeiculosEntrada.RemoveAt(posicao);
                     listaVeiculosSaida.Add(veiculoTMP);
                     popularDataGridEntrada(listaVeiculosEntrada);
@@ -216,5 +227,15 @@ namespace DesafioGaragem
         {
             Application.Exit();
         }
+        private void frmPrincipal_Activated(object sender, EventArgs e)
+        {
+            popularListaConfiguracaoGaragem(listaGaragem);
+        }
+
+        List<Veiculo> listaVeiculosEntrada = new List<Veiculo>();
+        List<Veiculo> listaVeiculosSaida = new List<Veiculo>();
+        List<Garagem> listaGaragem = new List<Garagem>();
+        int numeroVagas;
+        double preco;
     }
 }

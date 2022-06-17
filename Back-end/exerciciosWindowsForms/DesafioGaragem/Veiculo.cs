@@ -75,9 +75,9 @@ namespace DesafioGaragem
         /// </summary>
         /// <param name="lista">Lista com os veículos que estão no sistema.</param>
         /// <returns>Retorna true caso haja vagas.</returns>
-        public static bool verificaVagasGaragem(List<Veiculo> lista)
+        public static bool verificaVagasGaragem(List<Veiculo> lista, int numeroVagas)
         {
-            if (lista.Count() < 50)
+            if (lista.Count() < numeroVagas)
             {
                 return true;
             }
@@ -131,7 +131,7 @@ namespace DesafioGaragem
         /// Método para realizar a cobrança pela estadia do veículo.
         /// </summary>
         /// <param name="horaSaida">Hora digitada pelo usuário.</param>
-        public void realizarCobranca(string horaSaida)
+        public void realizarCobranca(string horaSaida, double preco)
         {
             string[] vetorDados = horaEntrada.Split(':');
             int hora = int.Parse(vetorDados[0]);
@@ -146,7 +146,7 @@ namespace DesafioGaragem
             this.TempoPermanencia = saida - entrada;
             double horasCobranca = (double) this.TempoPermanencia / 60;
             int tempo = (int) Math.Ceiling(horasCobranca);
-            this.ValorCobrado = tempo * 5;
+            this.ValorCobrado = tempo * preco;
         }
 
         public string PlacaVeiculo { get => placaVeiculo; set => placaVeiculo = value; }

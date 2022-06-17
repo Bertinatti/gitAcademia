@@ -54,8 +54,8 @@
             this.lblVagas = new System.Windows.Forms.Label();
             this.lblNumeroVagas = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.btnConfiguracao = new System.Windows.Forms.Button();
+            this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEntradaVeiculos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSaidaVeiculos)).BeginInit();
@@ -297,12 +297,6 @@
             this.panel2.Size = new System.Drawing.Size(450, 32);
             this.panel2.TabIndex = 19;
             // 
-            // imageListIcons
-            // 
-            this.imageListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListIcons.ImageStream")));
-            this.imageListIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListIcons.Images.SetKeyName(0, "icone_configuracao.png");
-            // 
             // btnConfiguracao
             // 
             this.btnConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfiguracao.BackgroundImage")));
@@ -314,6 +308,12 @@
             this.btnConfiguracao.TabIndex = 20;
             this.btnConfiguracao.UseVisualStyleBackColor = true;
             this.btnConfiguracao.Click += new System.EventHandler(this.btnConfiguracao_Click);
+            // 
+            // imageListIcons
+            // 
+            this.imageListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListIcons.ImageStream")));
+            this.imageListIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListIcons.Images.SetKeyName(0, "icone_configuracao.png");
             // 
             // frmPrincipal
             // 
@@ -340,6 +340,7 @@
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GARAGEM - Entrada e saída de veículos.";
+            this.Activated += new System.EventHandler(this.frmPrincipal_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPrincipal_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

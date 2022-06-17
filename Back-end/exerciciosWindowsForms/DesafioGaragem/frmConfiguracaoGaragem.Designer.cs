@@ -37,8 +37,8 @@
             this.lblVagas = new System.Windows.Forms.Label();
             this.tbVagasGaragem = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblNumeroVagas = new System.Windows.Forms.Label();
             this.lblVagasAtuais = new System.Windows.Forms.Label();
+            this.lblNumeroVagas = new System.Windows.Forms.Label();
             this.lblPrecoAtual = new System.Windows.Forms.Label();
             this.lblValorAtual = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -52,6 +52,7 @@
             this.btnGravar.TabIndex = 0;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnLimpar
             // 
@@ -61,6 +62,7 @@
             this.btnLimpar.TabIndex = 1;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnVoltar
             // 
@@ -120,16 +122,6 @@
             this.panel2.Size = new System.Drawing.Size(450, 32);
             this.panel2.TabIndex = 20;
             // 
-            // lblNumeroVagas
-            // 
-            this.lblNumeroVagas.AutoSize = true;
-            this.lblNumeroVagas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroVagas.Location = new System.Drawing.Point(369, 7);
-            this.lblNumeroVagas.Name = "lblNumeroVagas";
-            this.lblNumeroVagas.Size = new System.Drawing.Size(21, 16);
-            this.lblNumeroVagas.TabIndex = 18;
-            this.lblNumeroVagas.Text = "00";
-            // 
             // lblVagasAtuais
             // 
             this.lblVagasAtuais.AutoSize = true;
@@ -139,6 +131,16 @@
             this.lblVagasAtuais.Size = new System.Drawing.Size(89, 16);
             this.lblVagasAtuais.TabIndex = 17;
             this.lblVagasAtuais.Text = "Vagas atuais:";
+            // 
+            // lblNumeroVagas
+            // 
+            this.lblNumeroVagas.AutoSize = true;
+            this.lblNumeroVagas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroVagas.Location = new System.Drawing.Point(369, 7);
+            this.lblNumeroVagas.Name = "lblNumeroVagas";
+            this.lblNumeroVagas.Size = new System.Drawing.Size(21, 16);
+            this.lblNumeroVagas.TabIndex = 18;
+            this.lblNumeroVagas.Text = "00";
             // 
             // lblPrecoAtual
             // 
