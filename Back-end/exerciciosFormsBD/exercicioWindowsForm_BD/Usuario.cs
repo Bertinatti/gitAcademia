@@ -29,38 +29,66 @@ namespace exercicioWindowsForm_BD
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
         public string NomeCompleto { get => nomeCompleto; set => nomeCompleto = value; }
         public string Email { get => email; set => email = value; }
-        //public bool gravarUsuario()
-        //{
-        //    Banco banco = new Banco();
-        //    SqlConnection cn = banco.abrirConexao();
-        //    SqlTransaction tran = cn.BeginTransaction();
-        //    SqlCommand command = new SqlCommand();
-        //    command.Connection = cn;
-        //    command.Transaction = tran;
-        //    command.CommandType = CommandType.Text;
-        //    command.CommandText = "insert into usuario values (@idUsuario, @nomeCompleto, @email);";
-        //    command.Parameters.Add("@nomeCompleto", SqlDbType.Int);
-        //    command.Parameters.Add("@nomeCompleto", SqlDbType.VarChar);
-        //    command.Parameters.Add("@email", SqlDbType.VarChar);
-        //    command.Parameters[0].Value = this.idUsuario;
-        //    command.Parameters[1].Value = this.nomeCompleto;
-        //    command.Parameters[2].Value = this.email;
-        //    try
-        //    {
-        //        command.ExecuteNonQuery();
-        //        tran.Commit();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        tran.Rollback();
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        banco.fecharConexao();
-        //    }
-        //}
+        public bool gravarUsuario()
+        {
+            Banco banco = new Banco();
+            SqlConnection cn = banco.abrirConexao();
+            SqlTransaction tran = cn.BeginTransaction();
+            SqlCommand command = new SqlCommand();
+            command.Connection = cn;
+            command.Transaction = tran;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "insert into usuario values (@idUsuario, @nomeCompleto, @email);";
+            command.Parameters.Add("@idUsuario", SqlDbType.Int);
+            command.Parameters.Add("@nomeCompleto", SqlDbType.VarChar);
+            command.Parameters.Add("@email", SqlDbType.VarChar);
+            command.Parameters[0].Value = this.idUsuario;
+            command.Parameters[1].Value = this.nomeCompleto;
+            command.Parameters[2].Value = this.email;
+            try
+            {
+                command.ExecuteNonQuery();
+                tran.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                return false;
+            }
+            finally
+            {
+                banco.fecharConexao();
+            }
+        }
+        public static bool deletarUsuario(int idUsuario)
+        {
+            Banco banco = new Banco();
+            SqlConnection cn = banco.abrirConexao();
+            SqlTransaction tran = cn.BeginTransaction();
+            SqlCommand command = new SqlCommand();
+            command.Connection = cn;
+            command.Transaction = tran;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "DELETE FROM usuario WHERE idUsuario = @idUsuario;";
+            command.Parameters.Add("@idUsuario", SqlDbType.Int);
+            command.Parameters[0].Value = idUsuario;
+            try
+            {
+                command.ExecuteNonQuery();
+                tran.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                return false;
+            }
+            finally
+            {
+                banco.fecharConexao();
+            }
+        }
     }
 }
 
