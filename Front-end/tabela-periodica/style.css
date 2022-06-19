@@ -63,14 +63,12 @@ body{
     color: var(--bg-preto);
 }
 main{
-    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
     background-color: var(--bg-preto);
     display: flex;
 }
 .container{
-    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
     background-color: var(--bg-preto);
@@ -79,12 +77,20 @@ main{
 }
 .tabela-periodica{
     display: flex;
-    max-width: 960px;
+    max-width: 100%;
     flex-direction: column;
 }
+.legenda-tabela{
+    max-width: 100%;
+    font-size: small;
+    text-align: left;
+    display: flex;
+    max-width: 100%;
+    background-color: var(--bg-preto);
+}
 h1{
-    margin:15px;
-	font-size:36px;
+    margin:20px;
+	font-size:74px;
 	font-weight:100;
 	text-transform:uppercase;
     letter-spacing: 0.5px;
@@ -96,12 +102,12 @@ h2{
 }
 
 p{
-    font-size: 12px;
+    font-size: 10px;
 }
 
 section{
-	height: 80px;
-    width: 80px;
+	height: 75px;
+    width: 75px;
 	background:var(--bg-preto);	
 	border:2px solid;
 	border-radius:5px;	
@@ -120,3 +126,37 @@ span{
 	top:5px;
 	right:8px;	
 }
+
+ul{
+    margin-top: 16px;
+	display:flex;
+    justify-content: center;
+    position:sticky;
+    top:16px;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+}
+
+li{
+    font-size: 14px;
+	flex-basis:auto;
+	line-height:1.25;
+	margin-bottom:16px;
+}
+
+li:before{
+	content:' ';
+	display:inline-block;
+	width:14px;
+	height:14px;
+	border:2px solid;
+	border-radius:2px;	
+	margin-right:8px;
+	position:relative;
+	top:4px;
+}
+
+li + li{
+    margin-left:32px;	
+}	
