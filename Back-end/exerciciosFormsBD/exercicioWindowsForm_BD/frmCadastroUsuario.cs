@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using Microsoft.Data.SqlClient;
+using System.Collections;
 
 namespace exercicioWindowsForm_BD
 {
     public partial class frmCadastroUsuario : Form
-    {   
+    {
         /*
         private string conexaoString = ConfigurationManager.ConnectionStrings["UsuarioDBString"].ConnectionString;
         
@@ -84,10 +85,34 @@ namespace exercicioWindowsForm_BD
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(int.Parse(tbIdUsuario.Text), tbNomeCompleto.Text);
-            usuario.gravarUsuario();
-            carregarListView();
+            int idUsuario;
+            if(int.TryParse(tbIdUsuario.Text, out idUsuario))
+            {
+                Usuario usuario = new Usuario(idUsuario, tbNomeCompleto.Text);
+                bool retornaQuery = usuario.gravarUsuario();
+                if (retornaQuery)
+                {
+                    MessageBox.Show("Adição de usuário efetuado com sucesso.", "Sucesso na adição.", MessageBoxButtons.OK);
+                    
+                    string[] row = { usuario.IdUsuario.ToString(), usuario.NomeCompleto, usuario.Email };
+                    ListViewItem item = new ListViewItem(row);
+
+                    lvBanco.Items.Add(item);
+
+                    carregarListView();
+                }
+                else
+                {
+                    MessageBox.Show("Adição de usuário não foi efetuado.", "Falha na adição.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Número digitado não é um inteiro.", "Id de usuário inválido.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //carregarListView();
             limpaCampos();
+
             /*
             if(tbIdUsuario.Text == "" || tbNomeCompleto.Text == "")
             {
@@ -128,19 +153,22 @@ namespace exercicioWindowsForm_BD
         private void btnRemover_Click(object sender, EventArgs e)
         {
             int idUsuario = int.Parse(lvBanco.SelectedItems[0].Text);
-            bool retornaQuery = Usuario.deletarUsuario(idUsuario);
-            if (retornaQuery)
+            if(idUsuario != null)
             {
-                MessageBox.Show("Remoção de usuário efetuado com sucesso.", "Sucesso na remoção.", MessageBoxButtons.OK);
-                //carregarListView();
-                int indice = (lvBanco.SelectedItems[0].Index);
-                lvBanco.Items.RemoveAt(indice);
+                bool retornaQuery = Usuario.deletarUsuario(idUsuario);
+                if (retornaQuery)
+                {
+                    MessageBox.Show("Remoção de usuário efetuado com sucesso.", "Sucesso na remoção.", MessageBoxButtons.OK);
+                    //carregarListView();
+                    int indice = (lvBanco.SelectedItems[0].Index);
+                    lvBanco.Items.RemoveAt(indice);
+                }
+                else
+                {
+                    MessageBox.Show("Remoção de usuário não foi efetuado com sucesso.", "Falha na remoção.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                limpaCampos();
             }
-            else
-            {
-                MessageBox.Show("Remoção de usuário não foi fetuado com sucesso.", "Falha na remoção.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            limpaCampos();
             /*
             SqlConnection conexao = new SqlConnection(conexaoString);
             conexao.Open();

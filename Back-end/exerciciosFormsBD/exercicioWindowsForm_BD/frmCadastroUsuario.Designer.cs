@@ -84,6 +84,7 @@
             this.chIdUsuario,
             this.chNomeCompleto,
             this.chEmail});
+            this.lvBanco.FullRowSelect = true;
             this.lvBanco.HideSelection = false;
             this.lvBanco.Location = new System.Drawing.Point(13, 126);
             this.lvBanco.Name = "lvBanco";
