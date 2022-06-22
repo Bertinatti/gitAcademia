@@ -263,8 +263,8 @@ main{
     position: fixed;
     width: 80px;
     height:40px;
-    right: 40px;
-    bottom: 20px;
+    right: 15px;
+    bottom: 15px;
     font-size: .9em;
     border-radius: 50px;
     text-transform: uppercase;
