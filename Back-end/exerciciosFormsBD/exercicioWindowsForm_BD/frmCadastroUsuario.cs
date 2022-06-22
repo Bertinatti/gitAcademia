@@ -49,6 +49,30 @@ namespace exercicioWindowsForm_BD
             }
         }
         */
+        class ListViewItemComparer : IComparer
+        {
+            private int col;
+            public ListViewItemComparer()
+            {
+                col = 0;
+            }
+            public ListViewItemComparer(int column)
+            {
+                col = column;
+            }
+            public int Compare(object x, object y)
+            {
+                int numeroX, numeroY;
+                if((int.TryParse((((ListViewItem)x).SubItems[col].Text), out numeroX) && (int.TryParse((((ListViewItem)y).SubItems[col].Text), out numeroY))))
+                {
+                    return int.Parse(((ListViewItem)x).SubItems[col].Text) - int.Parse(((ListViewItem)y).SubItems[col].Text);
+                }
+                else
+                {
+                    return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+                }   
+            }
+        }
         private void carregarListView()
         {
             lvBanco.Items.Clear();
@@ -99,7 +123,7 @@ namespace exercicioWindowsForm_BD
 
                     lvBanco.Items.Add(item);
 
-                    carregarListView();
+                    //carregarListView();
                 }
                 else
                 {
@@ -111,6 +135,7 @@ namespace exercicioWindowsForm_BD
                 MessageBox.Show("Número digitado não é um inteiro.", "Id de usuário inválido.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             //carregarListView();
+            this.lvBanco.ListViewItemSorter = new ListViewItemComparer(0);
             limpaCampos();
 
             /*
@@ -199,6 +224,11 @@ namespace exercicioWindowsForm_BD
             //recarregar ListView
             carregarListView();
             */
+        }
+
+        private void lvBanco_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            this.lvBanco.ListViewItemSorter = new ListViewItemComparer(e.Column);
         }
     }
 }

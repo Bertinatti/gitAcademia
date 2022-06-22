@@ -92,6 +92,7 @@
             this.lvBanco.TabIndex = 3;
             this.lvBanco.UseCompatibleStateImageBehavior = false;
             this.lvBanco.View = System.Windows.Forms.View.Details;
+            this.lvBanco.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvBanco_ColumnClick);
             // 
             // chIdUsuario
             // 
