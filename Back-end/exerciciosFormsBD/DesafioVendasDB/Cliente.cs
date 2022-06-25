@@ -25,6 +25,14 @@ namespace DesafioGaragemDB
             this.email = email;
         }
 
+        public Cliente(string cpf, string nomeCliente, string telefone, string email)
+        {
+            this.cpf = cpf;
+            this.nomeCliente = nomeCliente;
+            this.telefone = telefone;
+            this.email = email;
+        }
+
         public int IdCliente { get => idCliente; set => idCliente = value; }
         public string Cpf { get => cpf; set => cpf = value; }
         public string NomeCliente { get => nomeCliente; set => nomeCliente = value; }
@@ -40,7 +48,7 @@ namespace DesafioGaragemDB
             command.Connection = cn;
             command.Transaction = tran;
             command.CommandType = CommandType.Text;
-            command.CommandText = "insert into usuario values (@cpf, @nome_cliente, @telefone, @email);";
+            command.CommandText = "insert into cliente values (@cpf, @nome_cliente, @telefone, @email);";
             command.Parameters.Add("@cpf", SqlDbType.VarChar);
             command.Parameters.Add("@nome_cliente", SqlDbType.VarChar);
             command.Parameters.Add("@telefone", SqlDbType.VarChar);

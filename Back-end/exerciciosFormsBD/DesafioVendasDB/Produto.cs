@@ -25,6 +25,14 @@ namespace DesafioGaragemDB
             this.estoque = estoque;
         }
 
+        public Produto(string codigoBarras, string nomeProduto, float preco, int estoque)
+        {
+            this.codigoBarras = codigoBarras;
+            this.nomeProduto = nomeProduto;
+            this.preco = preco;
+            this.estoque = estoque;
+        }
+
         public int IdProduto { get => idProduto; set => idProduto = value; }
         public string CodigoBarras { get => codigoBarras; set => codigoBarras = value; }
         public string NomeProduto { get => nomeProduto; set => nomeProduto = value; }
@@ -39,7 +47,7 @@ namespace DesafioGaragemDB
             command.Connection = cn;
             command.Transaction = tran;
             command.CommandType = CommandType.Text;
-            command.CommandText = "insert into usuario values (@codigo_barras, @nome_produto, @preco, @estoque);";
+            command.CommandText = "insert into produto values (@codigo_barras, @nome_produto, @preco, @estoque);";
             command.Parameters.Add("@codigo_barras", SqlDbType.VarChar);
             command.Parameters.Add("@nome_produto", SqlDbType.VarChar);
             command.Parameters.Add("@preco", SqlDbType.Float);

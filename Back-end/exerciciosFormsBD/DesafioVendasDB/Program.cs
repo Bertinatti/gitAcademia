@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace DesafioGaragemDB
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
@@ -18,5 +18,6 @@ namespace DesafioGaragemDB
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmPrincipalVenda());
         }
+
     }
 }

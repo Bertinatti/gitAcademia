@@ -107,5 +107,27 @@ namespace DesafioGaragemDB
                 banco.fecharConexao();
             }
         }
+        public static int efetuarLogin(string login, string senha)
+        {
+            int tipoUsuario = -1;
+            Banco banco = new Banco();
+            string sql = "select tipo_usuario from usuario where login_usuario='" + login + "' and senha='" + senha + "';";
+            DataTable dt = banco.executarConsultaGenerica(sql);
+            if (dt.Rows.Count == 1)
+            {
+                foreach(DataRow row in dt.Rows)
+                {
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        tipoUsuario = int.Parse(row[i].ToString());
+                    }
+                }
+                return tipoUsuario;
+            }
+            else
+            {
+                return -1;
+            }
+        }
     }
 }
