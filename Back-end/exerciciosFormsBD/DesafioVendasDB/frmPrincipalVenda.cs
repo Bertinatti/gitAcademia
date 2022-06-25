@@ -76,5 +76,10 @@ namespace DesafioGaragemDB
         {
             abrirForms(new frmProduto());
         }
+
+        private void btnCompra_Click(object sender, EventArgs e)
+        {
+            abrirForms(new frmVenda());
+        }
     }
 }

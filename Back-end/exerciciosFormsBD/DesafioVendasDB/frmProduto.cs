@@ -25,7 +25,7 @@ namespace DesafioGaragemDB
         }
         private void btnCadastrarProduto_Click(object sender, EventArgs e)
         {
-            Produto produto = new Produto(tbCodigoBarras.Text, tbNomeProduto.Text, float.Parse(tbPreco.Text), int.Parse(tbEstoque.Text));
+            Produto produto = new Produto(tbCodigoBarras.Text, tbNomeProduto.Text, decimal.Parse(tbPreco.Text), int.Parse(tbEstoque.Text));
             bool retornaQuery = produto.gravarProduto();
             if (retornaQuery)
             {
