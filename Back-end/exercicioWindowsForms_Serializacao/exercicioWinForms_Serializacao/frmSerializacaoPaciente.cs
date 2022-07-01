@@ -15,6 +15,7 @@ namespace exercicioWinForms_Serializacao
 {
     public partial class frmSerializacaoPaciente : Form
     {
+        // Caminho dos arquivos.
         string pacienteXML = @"C:\testes\paciente.xml";
 
         string pacienteSOAP = @"C:\testes\pacienteSOAP.xml";
@@ -25,7 +26,7 @@ namespace exercicioWinForms_Serializacao
         {
             InitializeComponent();
         }
-
+        // Método local para popular o DataGrid
         public void populaDataGrid(List<Paciente> lista)
         {
             dgPacientes.Rows.Clear();
@@ -34,14 +35,19 @@ namespace exercicioWinForms_Serializacao
                 dgPacientes.Rows.Add(p.Nome, (p.DataNascimento).ToShortDateString(), p.Cpf);
             }
         }
-
+        // Botão adicionando os valores digitados no DataGrid e na Lista de Pacientes
         private void btnAdicionarPaciente_Click(object sender, EventArgs e)
         {
             Paciente p = new Paciente(tbNomePaciente.Text, DateTime.Parse(tbDataNascimento.Text), tbCPF.Text);
             listaPaciente.Add(p);
             populaDataGrid(listaPaciente);
         }
-
+        // Botão para limpar as linhas do DataGrid
+        private void btnLimpaDataGrid_Click(object sender, EventArgs e)
+        {
+            dgPacientes.Rows.Clear();
+        }
+        // Botão para serializar os valores da Lista de Paciente em arquivo XML
         private void btnSerializarXML_Click(object sender, EventArgs e)
         {
             try
@@ -60,6 +66,7 @@ namespace exercicioWinForms_Serializacao
                 MessageBox.Show("Erro: " + ex.Message);
             }
         }
+        // Botão para desserializar os valores do arquivo XML para a Lista de Paciente
         private void btnDesseralizarXML_Click(object sender, EventArgs e)
         {
             try
@@ -82,7 +89,7 @@ namespace exercicioWinForms_Serializacao
                 MessageBox.Show("Erro: " + ex.Message);
             }
         }
-
+        // Botão para serializar os valores da Lista de Paciente em arquivo XML (SOAP)
         private void btnSerializarSOAP_Click(object sender, EventArgs e)
         {
             try
@@ -103,6 +110,7 @@ namespace exercicioWinForms_Serializacao
                 MessageBox.Show("Erro: " + ex.Message);
             }
         }
+        // Botão para desserializar os valores do arquivo XML (SOAP) para a Lista de Paciente
         private void btnDesseralizarSOAP_Click(object sender, EventArgs e)
         {
             try
@@ -126,16 +134,17 @@ namespace exercicioWinForms_Serializacao
             }
 
         }
-
+        // Botão para serializar os valores da Lista de Paciente em arquivo JSON
         private void btnSerializarJSON_Click(object sender, EventArgs e)
         {
             try
             {
 
-                Newtonsoft.Json.JsonSerializer serializadorJSON = new JsonSerializer();
+                JsonSerializer serializadorJSON = new JsonSerializer();
+                serializadorJSON.Formatting = Formatting.Indented;
                 StreamWriter procurador = new StreamWriter(pacienteJSON);
                 JsonWriter escritorJSON = new JsonTextWriter(procurador);
-
+                
                 serializadorJSON.Serialize(escritorJSON, listaPaciente);
     
                 procurador.Close();
@@ -149,7 +158,7 @@ namespace exercicioWinForms_Serializacao
                 MessageBox.Show("Erro: " + ex.Message);
             }
         }
-
+        // Botão para desserializar os valores do arquivo JSON para a Lista de Paciente
         private void btnDesseralizarJSON_Click(object sender, EventArgs e)
         {
             try
@@ -169,11 +178,7 @@ namespace exercicioWinForms_Serializacao
             }
         }
 
-        private void btnLimpaDataGrid_Click(object sender, EventArgs e)
-        {
-            dgPacientes.Rows.Clear();
-        }
-
+        // Lista global para receber os objetos da classe Paciente
         List<Paciente> listaPaciente = new List<Paciente>();
     
     }
