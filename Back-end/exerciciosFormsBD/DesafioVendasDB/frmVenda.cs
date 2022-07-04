@@ -135,12 +135,6 @@ namespace DesafioGaragemDB
             idProduto = int.Parse(dgProdutos.CurrentRow.Cells[0].Value.ToString());
         }
 
-        List<Item> listaItensVenda = new List<Item>();
-        int idCliente;
-        int idVenda;
-        int idProduto;
-        string nomeProduto;
-        decimal valorVenda;
 
         private void btnSelecionaUsuario_Click(object sender, EventArgs e)
         {
@@ -149,5 +143,13 @@ namespace DesafioGaragemDB
             cbNomeCliente.Enabled = false;
             btnAdicionarItem.Enabled = true;
         }
+
+        List<Item> listaItensVenda = new List<Item>();
+        int idCliente;
+        int idVenda;
+        int idProduto;
+        string nomeProduto;
+        decimal valorVenda;
+
     }
 }

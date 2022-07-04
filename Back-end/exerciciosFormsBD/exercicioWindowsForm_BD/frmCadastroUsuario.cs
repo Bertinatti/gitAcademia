@@ -65,7 +65,7 @@ namespace exercicioWindowsForm_BD
                 int numeroX, numeroY;
                 if((int.TryParse((((ListViewItem)x).SubItems[col].Text), out numeroX) && (int.TryParse((((ListViewItem)y).SubItems[col].Text), out numeroY))))
                 {
-                    return int.Parse(((ListViewItem)x).SubItems[col].Text) - int.Parse(((ListViewItem)y).SubItems[col].Text);
+                    return numeroX - numeroY;
                 }
                 else
                 {

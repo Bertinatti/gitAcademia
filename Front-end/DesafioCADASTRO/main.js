@@ -10,7 +10,9 @@ document.getElementById('sobrenome').addEventListener('keyup', gerarLogin);
 function gerarLogin(){
     const nome = document.getElementById('nome').value;
     const sobrenome = document.getElementById('sobrenome').value;
-    const login = nome + "." + sobrenome;
+    const validaNome = nome.replace(/[^a-zA-Z]/g, '');
+    const validaSobrenome = sobrenome.replace(/[^a-zA-Z]/g, '');
+    const login = validaNome + "." + validaSobrenome;
     document.getElementById('login').value = login.toLowerCase();
 }
 
