@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
         integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script defer src="main.js"></script>
     <title>Desafio CADASTRO - Formulário e JavaScript</title>
 </head>
@@ -25,12 +26,6 @@
                 <div class="col-md-6">
                     <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nome" required>
-                    <div class="valid-feedback">
-                        Nome válido
-                    </div>
-                    <div class="invalid-feedback">
-                        Nome inválido
-                    </div>
                 </div>
                 <div class="col-md-6">
                     <label for="sobrenome" class="form-label">Sobrenome <span class="text-danger">*</span></label>
@@ -50,7 +45,8 @@
                 </div>
                 <div class="col-md-3">
                     <label for="cep" class="form-label">CEP <span class="text-danger">*</label>
-                    <input type="text" class="form-control" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);">
+                    <input type="text" class="form-control" id="cep" value="" size="10" maxlength="9"
+                        onblur="pesquisacep(this.value);">
                 </div>
                 <div class="col-md-6">
                     <label for="endereco" class="form-label">Endereço <span class="text-danger">*</label>
@@ -100,19 +96,19 @@
                         <option>SE</option>
                         <option>TO</option>
                     </select>
-                </div>               
+                </div>
                 <hr class="my-4">
                 <h2 class="mb-2 fs-4">Informações pessoais</h2>
                 <div class="col-md-6">
-                    <label for="github" class="form-label">GitHub</label>
+                    <label for="github" class="form-label">GitHub <span class="text-danger">*</span></label>
                     <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">github/</span>
+                        <span class="input-group-text" id="inputGroupPrepend">github.com/</span>
                         <input type="text" class="form-control" id="github" aria-describedby="inputGroupPrepend"
                             required>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <label for="academia" class="form-label">Academia</label>
+                    <label for="academia" class="form-label">Academia <span class="text-danger">*</span></label>
                     <select id="academia" class="form-select">
                         <option selected>...</option>
                         <option>Academia - Java</option>
@@ -120,7 +116,7 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="professor" class="form-label">Professor</label>
+                    <label for="professor" class="form-label">Professor <span class="text-danger">*</span></label>
                     <select id="professor" class="form-select">
                         <option selected>...</option>
                         <option>Alexandre Zamberlan</option>
@@ -130,11 +126,69 @@
                 </div>
                 <hr class="my-4">
                 <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                            Check me out
-                        </label>
+                    <label for="termos-legais" class="form-label">
+                        <h2 class="mb-2 fs-4">Termos legais</h2>
+                    </label>
+                    <textarea class="form-control mt-2" id="termos-legais" rows="15" style="resize: none;" disabled>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in magna pulvinar, dapibus orci eget, pellentesque sapien. Vestibulum laoreet tortor a vulputate ultricies. Quisque consequat vel tortor eget blandit. Mauris mattis in nisi a tincidunt. In pulvinar rutrum ligula nec gravida. Sed vitae faucibus eros. Nullam aliquet nulla nec dolor tempor, non varius nisi tincidunt. Ut in est condimentum, auctor urna quis, consectetur mi. Nam pulvinar magna eleifend lacus condimentum tincidunt.
+
+                        Donec porta, dolor eu facilisis dictum, magna nunc sodales velit, in tincidunt nulla ante quis leo. Vivamus fringilla sem et risus rutrum rutrum. Vestibulum posuere elementum finibus. Pellentesque scelerisque iaculis lorem. Donec posuere, lacus ut fermentum elementum, nulla urna commodo lorem, sit amet sagittis nisl velit non urna. Ut elementum dapibus auctor. Curabitur placerat posuere magna, eget pulvinar justo molestie at. Sed ullamcorper commodo urna. Pellentesque id interdum ligula.
+                        
+                        Aenean interdum turpis leo, non iaculis eros ultricies at. Ut facilisis mattis justo at blandit. Nulla sed augue nec sem egestas hendrerit. Donec tempus dolor eget urna suscipit, eu convallis nisl sodales. Etiam efficitur, urna in hendrerit dignissim, tortor elit tempus massa, quis fringilla ante orci vel nulla. Mauris quis nulla orci. Vestibulum euismod sed nulla quis sodales. Nam eget porttitor orci. Etiam feugiat nulla dolor, eget ultrices lacus facilisis sit amet. Sed ultricies orci id nunc commodo gravida. Sed tellus ex, tincidunt id erat non, dapibus volutpat purus. Morbi sodales porttitor sem. Vestibulum eget ex quam. Aenean scelerisque massa eu risus ultrices venenatis. Nulla sit amet dolor ac risus malesuada venenatis quis eu massa.
+                        
+                        Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras hendrerit a tellus vitae ornare. Cras viverra eget nisi id euismod. Proin efficitur lacus quis arcu condimentum, sit amet tempus dolor lacinia. Suspendisse porta mauris nec sodales egestas. Phasellus a iaculis odio. Fusce lacinia nibh eu facilisis convallis. In hac habitasse platea dictumst. Nulla sit amet justo in dolor ullamcorper tristique vel a magna. Vivamus sapien sapien, aliquet id facilisis non, gravida vitae eros.
+                        
+                        Sed at dapibus nisi, at blandit felis. Aenean sit amet nibh sem. Pellentesque tellus leo, malesuada at sagittis ut, placerat vel magna. Sed at maximus eros. Nunc in est in leo mattis eleifend. Integer venenatis, diam quis condimentum feugiat, nisl mauris venenatis nibh, vitae viverra ante arcu ut ipsum. Duis volutpat metus scelerisque vehicula luctus. Duis id lacus sed dui faucibus posuere. Morbi venenatis ornare elit. Mauris eleifend lorem sed nisi volutpat, eget condimentum turpis pharetra. Vestibulum luctus egestas feugiat. Cras vestibulum scelerisque mauris, eget interdum sapien venenatis scelerisque.
+                        
+                        Morbi placerat, purus venenatis suscipit viverra, odio lorem ornare justo, et scelerisque ipsum mauris ac augue. Vivamus mollis nulla at tellus egestas congue. Cras lorem ante, faucibus vitae nulla id, auctor interdum ex. Aenean feugiat nisi lectus, sit amet dictum nibh ullamcorper ac. Donec eu fermentum turpis, sit amet aliquet lacus. Proin ac diam est. Vestibulum dui mauris, volutpat eu odio eu, varius pretium mauris.
+                        
+                        Donec a interdum nunc. Vestibulum mi purus, gravida et tristique in, tristique sit amet sapien. Suspendisse libero magna, pretium a justo at, pulvinar consectetur diam. Sed pellentesque consequat quam, in accumsan tellus faucibus ut. Curabitur ultrices sem non egestas euismod. Nam dignissim sagittis nulla, faucibus dignissim est. Maecenas eu eros pulvinar, lacinia ex a, vehicula lectus. Curabitur suscipit sed ex luctus finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam laoreet libero dui, id vehicula magna gravida quis. Vivamus elementum lectus diam, vehicula tristique nunc vulputate interdum. Maecenas sodales vestibulum mauris pellentesque sagittis. Morbi ac ex dolor. Praesent sed sem vitae mi lobortis accumsan.
+                        
+                        Sed nec neque iaculis, pellentesque dolor non, bibendum lacus. Proin maximus scelerisque pulvinar. Nulla nibh arcu, hendrerit vitae aliquet at, congue sit amet velit. Aenean pellentesque ante id scelerisque ultricies. Fusce convallis orci diam, eget auctor neque molestie vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur posuere turpis vel erat finibus luctus. Integer sed lorem ligula.
+                        
+                        Ut in iaculis massa. Nullam nec pretium quam. Vestibulum mattis eget neque ac luctus. Nam vel velit id libero consequat malesuada vel et magna. Donec volutpat consequat vestibulum. Vestibulum ac arcu commodo, lacinia purus vel, rutrum velit. Ut auctor egestas risus a gravida. Vivamus porta ut nulla molestie luctus. Nulla ut lacus sagittis, volutpat urna quis, posuere orci.
+                        
+                        Nulla augue arcu, vestibulum id ipsum at, scelerisque condimentum nisl. Fusce justo lacus, ornare ut faucibus et, gravida at ante. Maecenas nec urna risus. Aenean convallis nec lorem eu congue. Morbi id sagittis est, id tincidunt felis. Cras in pulvinar justo. Quisque a nibh dapibus, fringilla purus lobortis, scelerisque lacus. Mauris scelerisque arcu eros, sed efficitur odio elementum non. Suspendisse fermentum tortor ac augue venenatis, et laoreet libero sollicitudin. Duis ac lacinia enim. Nullam finibus elit id purus imperdiet, et cursus augue porta. Mauris tempor finibus pellentesque. Vivamus arcu erat, scelerisque a accumsan sed, interdum sit amet libero.
+                        
+                        Mauris consequat in ex vel maximus. Nullam tortor purus, semper sit amet malesuada quis, auctor quis lorem. Nam eu augue eget magna rhoncus bibendum in nec justo. Aenean est metus, ornare vel interdum ac, ultrices et ex. Nunc eu volutpat magna, vitae bibendum sapien. Duis nec pulvinar eros. Curabitur rhoncus id justo at iaculis. Donec at fringilla enim. Suspendisse facilisis libero vehicula sagittis molestie. Vivamus in massa finibus, sagittis nisi nec, dignissim ipsum. Sed iaculis pulvinar eros. Sed eu ex at mi vehicula porttitor et ut tellus. Suspendisse tempus accumsan tortor vel ullamcorper. Nullam aliquet metus luctus, lobortis risus vitae, convallis ante.
+                        
+                        Morbi ac mollis magna, non tempus justo. Donec sit amet massa in dui ultrices vulputate in a nibh. Phasellus urna erat, hendrerit eu vestibulum nec, suscipit sed enim. Integer at semper lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin egestas urna vitae lacus placerat, nec feugiat justo volutpat. Pellentesque sed massa accumsan, rhoncus risus nec, consequat eros. Ut dictum, justo at fermentum blandit, tellus ligula facilisis massa, at rutrum ante mi sit amet nunc.
+                        
+                        Donec tincidunt in massa sed pharetra. Nunc nec vehicula libero, at hendrerit nisl. Vestibulum nunc dolor, euismod non ex et, feugiat congue elit. Maecenas id nunc posuere, vulputate ligula quis, molestie eros. Suspendisse tellus lorem, ultricies sit amet molestie a, eleifend vehicula libero. Fusce dignissim suscipit elit sit amet elementum. Aenean blandit aliquam purus vitae cursus. Proin sit amet sapien id libero aliquam vehicula. Duis mollis tellus ut mauris dictum commodo. Nunc auctor tristique nibh vitae suscipit.
+                        
+                        Fusce volutpat massa commodo neque accumsan faucibus. Vivamus tincidunt dolor purus, id porta dui sodales quis. Nunc volutpat aliquam lectus non faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. In tristique ultrices aliquet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nam sollicitudin, leo vitae fermentum vestibulum, dolor ex auctor ante, sit amet pulvinar neque sapien in erat. Curabitur commodo felis non odio ultricies malesuada.
+                        
+                        Etiam at purus ac nisl elementum malesuada semper ut velit. Duis ut erat leo. Sed vehicula lorem eu tincidunt iaculis. Integer vel nisl vitae nisi pharetra vestibulum eget malesuada eros. Sed condimentum, ipsum ac cursus consequat, enim tortor commodo justo, in consectetur orci risus quis lorem. Aenean eget elementum enim. Proin interdum diam a diam vehicula aliquam. Nulla porttitor enim sed augue mattis mollis. In sed ipsum massa. Duis tempor orci sit amet eleifend suscipit. Curabitur ac blandit est, nec laoreet turpis. In accumsan arcu nec augue aliquam, a maximus lorem consectetur. Nullam ut maximus est.
+                        
+                        Maecenas placerat lorem sit amet orci ornare laoreet ullamcorper ac leo. Proin dignissim ut ex id consequat. Suspendisse sed ullamcorper lectus, quis facilisis nibh. Mauris laoreet nunc eu ante elementum lobortis. Donec orci tortor, luctus eu neque ut, tempus iaculis nisi. Mauris non tincidunt turpis. Nulla facilisi. Duis vitae congue elit, at posuere erat. Cras aliquet ultrices dignissim. Maecenas pellentesque dolor id porttitor tristique.
+                        
+                        Integer convallis semper dictum. Quisque consequat tellus ac nisi eleifend, et porta urna accumsan. Fusce et volutpat est. Vivamus urna quam, pretium ac consequat sit amet, volutpat et dui. Curabitur sed est ante. Sed in aliquam enim. In ut enim scelerisque, interdum leo congue, rhoncus ante. Etiam eget pulvinar nisl. Fusce dictum mauris id dolor tristique lacinia. Mauris lacus lectus, lobortis eu sollicitudin ac, maximus a odio. Quisque rutrum ante fermentum, varius quam sit amet, tempus ipsum. Nunc ac tortor fringilla, convallis leo et, varius purus.
+                        
+                        Nunc a iaculis diam. Cras ullamcorper magna ac malesuada fringilla. Phasellus vel mauris tristique, varius erat in, rhoncus neque. Praesent libero mauris, dictum quis nunc a, feugiat hendrerit nisl. Aenean quis tincidunt risus, vel pharetra mi. Nullam sed fermentum odio. In ut varius lacus, eget consequat ipsum. Curabitur vitae accumsan neque, facilisis pulvinar massa. Aliquam eget nisi nec ipsum elementum convallis vel ut eros. Ut risus nisi, cursus ac vehicula a, eleifend vel eros. Aenean id quam fermentum urna euismod viverra. Cras malesuada eu enim eu finibus. Donec sed lacinia ipsum. Donec ut mauris at augue pharetra semper eu tristique quam. Quisque quis quam sed quam facilisis ullamcorper.
+                        
+                        Quisque euismod cursus maximus. Quisque et nisi laoreet diam consectetur fringilla non non eros. Nullam blandit aliquam massa, non consequat elit euismod vitae. Vivamus eget tristique tortor, ac mollis odio. Suspendisse blandit sit amet neque vitae bibendum. Sed egestas purus quis eros imperdiet tincidunt. Sed porttitor sapien iaculis, sollicitudin nibh non, scelerisque arcu. Etiam vitae hendrerit elit. In fringilla euismod nisl eu sodales. Integer bibendum, purus eget pulvinar faucibus, odio lorem efficitur magna, quis dapibus eros nisl eget quam. Nulla nulla nisl, congue ut congue quis, vehicula vel nibh. Etiam id justo gravida, placerat diam consequat, fermentum ipsum. Maecenas eleifend at lectus non tempor. Cras dapibus eu tortor eget commodo.
+                        
+                        Vivamus at arcu accumsan, congue lectus eu, bibendum nisl. Suspendisse convallis libero eget dui egestas, bibendum hendrerit nisl semper. Sed eget nibh in mauris vulputate pharetra eu vel erat. Nulla et urna metus. Nunc gravida eros quis imperdiet volutpat. Fusce eleifend nec neque a luctus. Sed convallis tincidunt odio sed ultricies. In non eros id velit ultrices aliquam non nec leo. Nulla consectetur ex ut velit pulvinar condimentum. Mauris interdum nulla vitae augue dictum, ac fringilla lectus dictum. Nam id laoreet massa. Donec commodo in nisi vulputate fringilla. Proin quis lectus eu est hendrerit dapibus. Cras quis congue urna. Nulla vitae est sem. Praesent convallis dapibus ultrices.
+                    </textarea>
+                    <div class="form-check pt-3">
+                        <input class="form-check-input" type="checkbox" id="aceito-termos" disabled>
+                        <label class="form-check-label" for="aceito-termos">Aceito os termos legais,</label>
+                    </div>
+                    <div class="container p-0 mt-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="receber-email" id="receber-email"
+                                value="option1" checked>
+                            <label class="form-check-label" for="receber-email">
+                                Aceito receber as notificações e atualizações por e-mail.
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="receber-email" id="nao-receber-email"
+                                value="option2">
+                            <label class="form-check-label" for="nao-receber-email">
+                                Não quero receber as notificações e atualizações.
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -143,12 +197,95 @@
             </form>
         </div>
     </main>
-    <section id="table-dados" class="p-5 mb-5 d-none">
-        <table class="table">
-            <thead></thead>
-
-        </table>
-    </section>
+    <div class="container">
+        <section id="table-dados" class="pt-5">
+            <table class="table d-none" id="tabela-dados">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Informações Pessoais</th>
+                        <th scope="colspan"></th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Nome</td>
+                        <td id="nome-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>E-mail</td>
+                        <td id="email-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Login</td>
+                        <td id="login-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Senha</td>
+                        <td id="senha-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>CEP</td>
+                        <td id="cep-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Endereço</td>
+                        <td id="endereco-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Complemento</td>
+                        <td id="complemento-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Bairro</td>
+                        <td id="bairro-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Cidade</td>
+                        <td id="cidade-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Estado</td>
+                        <td id="estado-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11</th>
+                        <td>GitHub</td>
+                        <td id="github-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td>Academia</td>
+                        <td id="academia-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13</th>
+                        <td>Professor</td>
+                        <td id="professor-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14</th>
+                        <td>Termos legais</td>
+                        <td id="termos-legais-tabela"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">15</th>
+                        <td>Notificações e atualizações</td>
+                        <td id="receber-email-tabela"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
 </body>
-
 </html>

@@ -1,13 +1,50 @@
 document.getElementById('formulario')
-        .addEventListener('submit',function (form){
+        .addEventListener('submit',function (form) {
             form.preventDefault();
-            console.log('Submetido')
+
+            var termos = document.querySelector('#aceito-termos');
+
+            if(termos.checked) {
+
+                document.getElementById('tabela-dados').classList.remove('d-none');
+
+                document.getElementById('nome-tabela').innerText = document.getElementById('nome').value + " " + document.getElementById('sobrenome').value;
+                document.getElementById('email-tabela').innerText = document.getElementById('email').value;
+                document.getElementById('login-tabela').innerText = document.getElementById('login').value;
+                document.getElementById('senha-tabela').innerText = document.getElementById('senha').value;
+                document.getElementById('cep-tabela').innerText = document.getElementById('cep').value;
+                document.getElementById('endereco-tabela').innerText = document.getElementById('endereco').value;
+                document.getElementById('complemento-tabela').innerText = document.getElementById('complemento').value;
+                document.getElementById('bairro-tabela').innerText = document.getElementById('bairro').value;
+                document.getElementById('cidade-tabela').innerText = document.getElementById('cidade').value;
+                document.getElementById('estado-tabela').innerText = document.getElementById('estado').value;
+                document.getElementById('github-tabela').innerText = "https://github.com/" + document.getElementById('github').value;
+                document.getElementById('academia-tabela').innerText = document.getElementById('academia').value;
+                document.getElementById('professor-tabela').innerText = document.getElementById('professor').value;
+                document.getElementById('termos-legais-tabela').innerText = "Termos legais aceitos.";
+
+                var receberEmails = document.querySelector('#receber-email');
+
+                if(receberEmails.checked) {
+                    document.getElementById('receber-email-tabela').innerText = "Aceito receber os e-mails.";
+                }
+                else {
+                    document.getElementById('receber-email-tabela').innerText = "Não aceito receber os e-mails.";
+                }
+                this.reset();
+            }
+            else{
+                alert("Os Termos Legais não foram aceitos!");
+            }          
         });
 
+document.getElementById('termos-legais').addEventListener('scroll', habilitarAceite);
+
 document.getElementById('nome').addEventListener('keyup', gerarLogin);
+
 document.getElementById('sobrenome').addEventListener('keyup', gerarLogin);
 
-function gerarLogin(){
+function gerarLogin() {
     const nome = document.getElementById('nome').value;
     const sobrenome = document.getElementById('sobrenome').value;
     const validaNome = nome.replace(/[^a-zA-Z]/g, '');
@@ -16,11 +53,12 @@ function gerarLogin(){
     document.getElementById('login').value = login.toLowerCase();
 }
 
-// function validarDados()
-// {
-//     const validacao = document.getElementById('formulario').addEventListener('submit', ValidityState);
-//     console.log("Validou");
-// }
+function habilitarAceite() {
+    var termosLegais = document.getElementById('termos-legais');
+    if ((termosLegais.scrollTop + termosLegais.offsetHeight) >= termosLegais.scrollHeight){
+        document.getElementById('aceito-termos').removeAttribute('disabled');
+    }  
+}
 
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
