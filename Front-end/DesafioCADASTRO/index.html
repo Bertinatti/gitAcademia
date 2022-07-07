@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"
         integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script defer src="main.js"></script>
@@ -15,55 +16,113 @@
 </head>
 
 <body>
+    <!-- Ínicio do Cabeçalho -->
+    <header>
+        <!-- Imagem do Backgrund do Cabeçalho -->
+        <div class="text-center" style="background-image: url('https://img.freepik.com/fotos-gratis/fundo-preto-antigo-textura-do-grunge-papel-de-parede-escuro-quadro-negro-quadro-negro-parede-da-sala_1258-28312.jpg?t=st=1657158103~exp=1657158703~hmac=b2ebadb36bbe8309ef969368cdc250b5211c95b7eaa161b9d4803c564ad716e5&w=1380');
+            height: 400px; background-size:100%;">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); height: 100%;">
+                <div class="container pt-4">
+                    <!-- Mídias Sociais - Cabeçalho -->
+                    <section class="mb-4">
+                        <!-- Facebook -->
+                        <a class="btn btn-link btn-lg text-light m-1" href="https://www.facebook.com/cardbtt/"
+                            target="_blank"><i class="bi bi-facebook"></i></a>
+                        <!-- Twitter -->
+                        <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!"><i
+                                class="bi bi-twitter"></i></a>
+                        <!-- Google -->
+                        <a class="btn btn-link btn-floating btn-lg text-light m-1" href="#!"><i
+                                class="bi bi-google"></i></a>
+                        <!-- Instagram -->
+                        <a class="btn btn-link btn-floating btn-lg text-light m-1"
+                            href="https://www.instagram.com/leobertinatti/" target="_blank"><i
+                                class="bi bi-instagram"></i></a>
+                        <!-- Linkedin -->
+                        <a class="btn btn-link btn-floating btn-lg text-light m-1"
+                            href="https://www.linkedin.com/in/leobertinatti/" target="_blank"><i
+                                class="bi bi-linkedin"></i></a>
+                        <!-- Github -->
+                        <a class="btn btn-link btn-floating btn-lg text-light m-1" href="https://github.com/Bertinatti/"
+                            target="_blank"><i class="bi bi-github"></i></a>
+                    </section>
+                    <!-- Fim das Mídias Sociais - Cabeçalho -->
+                </div>
+                <!-- Mensagem de chamada da página -->
+                <div class="d-flex justify-content-center align-items-center h-50">
+                    <div class="text-white">
+                        <h1>Desafio Front-End</h1>
+                        <p class="lead">Formulário de cadastro sem envio para banco de dados</p>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </header>
+    <!-- Fim do Cabeçalho -->
     <main>
+        <button type="button" class="btn btn-dark btn-floating" id="btn-back-to-top"
+            style="background-color: rgb(0,0,0);"><i class="bi bi-arrow-up"></i></button>
+        <!-- Container principal da página  - Formulário -->
         <div class="container">
+            <!-- Informações iniciais sobre o formulário da página -->
             <div class="py-5 text-center">
                 <h1>Formulário</h1>
                 <p class="lead">O formulário abaixo não irá enviar seus dados</p>
             </div>
-            <form class="row g-3 needs-validation" id="formulario" novalidate>
+            <form class="row g-3 needs-validation" id="formulario" validate>
                 <h2 class="mb-2 fs-4">Informações pessoais</h2>
+                <!-- Campo do nome -->
                 <div class="col-md-6">
                     <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nome" required>
                 </div>
+                <!-- Campo do sobrenome -->
                 <div class="col-md-6">
                     <label for="sobrenome" class="form-label">Sobrenome <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="sobrenome" required>
                 </div>
+                <!-- Campo do e-mail -->
                 <div class="col-md-4">
                     <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" id="email" required>
                 </div>
+                <!-- Campo do login - gerado automaticamente com uma concatenação: nome.sobrenome -->
                 <div class="col-md-4">
                     <label for="login" class="form-label">Login</label>
                     <input type="text" class="form-control" id="login" disabled required>
                 </div>
+                <!-- Campo da senha -->
                 <div class="col-md-4">
                     <label for="senha" class="form-label">Senha <span class="text-danger">*</span></label>
                     <input type="password" class="form-control" id="senha" required>
                 </div>
+                <!-- Campo do CEP - captura e validado por função JS -->
                 <div class="col-md-3">
                     <label for="cep" class="form-label">CEP <span class="text-danger">*</label>
                     <input type="text" class="form-control" id="cep" value="" size="10" maxlength="9"
-                        onblur="pesquisacep(this.value);">
+                        onblur="pesquisacep(this.value);" required>
                 </div>
+                <!-- Campo do endereço - gerado automaticamente após o preenchimento do CEP -->
                 <div class="col-md-6">
                     <label for="endereco" class="form-label">Endereço <span class="text-danger">*</label>
                     <input type="text" class="form-control" id="endereco" disabled required>
                 </div>
+                <!-- Campo do Complemento -->
                 <div class="col-md-3">
                     <label for="complemento" class="form-label">Complemento</label>
                     <input type="text" class="form-control" id="complemento" required>
                 </div>
+                <!-- Campo do bairro - gerado automaticamente após o preenchimento do CEP -->
                 <div class="col-md-5">
                     <label for="bairro" class="form-label">Bairro <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="bairro" disabled required>
                 </div>
+                <!-- Campo da cidade - gerado automaticamente após o preenchimento do CEP -->
                 <div class="col-md-5">
                     <label for="cidade" class="form-label">Cidade <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="cidade" disabled required>
                 </div>
+                <!-- Campo do estado - gerado automaticamente após o preenchimento do CEP -->
                 <div class="col-md-2">
                     <label for="estado" class="form-label">Estado <span class="text-danger">*</label>
                     <select id="estado" class="form-select" disabled required>
@@ -97,8 +156,11 @@
                         <option>TO</option>
                     </select>
                 </div>
+                <!-- Linha horizontal de quebra de página -->
                 <hr class="my-4">
+                <!-- Segunda parte do formulário - informações pessoais github, academia e professores -->
                 <h2 class="mb-2 fs-4">Informações pessoais</h2>
+                <!-- Campo do link do github -->
                 <div class="col-md-6">
                     <label for="github" class="form-label">GitHub <span class="text-danger">*</span></label>
                     <div class="input-group has-validation">
@@ -107,24 +169,28 @@
                             required>
                     </div>
                 </div>
+                <!-- Campo de seleção da academia -->
                 <div class="col-md-3">
                     <label for="academia" class="form-label">Academia <span class="text-danger">*</span></label>
-                    <select id="academia" class="form-select">
+                    <select id="academia" class="form-select" required>
                         <option selected>...</option>
                         <option>Academia - Java</option>
                         <option>Academia - DotNet</option>
                     </select>
                 </div>
+                <!-- Campo de seleção do professor da academia -->
                 <div class="col-md-3">
                     <label for="professor" class="form-label">Professor <span class="text-danger">*</span></label>
-                    <select id="professor" class="form-select">
+                    <select id="professor" class="form-select" required>
                         <option selected>...</option>
                         <option>Alexandre Zamberlan</option>
                         <option>Deivison Pasa</option>
                         <option>Ricardo Frohlich</option>
                     </select>
                 </div>
+                <!-- Linha horizontal de quebra de página -->
                 <hr class="my-4">
+                <!-- Terceira parte do formulário - Termos Legais da página -->
                 <div class="col-12">
                     <label for="termos-legais" class="form-label">
                         <h2 class="mb-2 fs-4">Termos legais</h2>
@@ -170,10 +236,12 @@
                         
                         Vivamus at arcu accumsan, congue lectus eu, bibendum nisl. Suspendisse convallis libero eget dui egestas, bibendum hendrerit nisl semper. Sed eget nibh in mauris vulputate pharetra eu vel erat. Nulla et urna metus. Nunc gravida eros quis imperdiet volutpat. Fusce eleifend nec neque a luctus. Sed convallis tincidunt odio sed ultricies. In non eros id velit ultrices aliquam non nec leo. Nulla consectetur ex ut velit pulvinar condimentum. Mauris interdum nulla vitae augue dictum, ac fringilla lectus dictum. Nam id laoreet massa. Donec commodo in nisi vulputate fringilla. Proin quis lectus eu est hendrerit dapibus. Cras quis congue urna. Nulla vitae est sem. Praesent convallis dapibus ultrices.
                     </textarea>
+                    <!-- Aceite dos Termos Legais da página -->
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="checkbox" id="aceito-termos" disabled>
+                        <input class="form-check-input" type="checkbox" id="aceito-termos" disabled required>
                         <label class="form-check-label" for="aceito-termos">Aceito os termos legais,</label>
                     </div>
+                    <!-- Radio button para receber e-mails e notificações -->
                     <div class="container p-0 mt-3">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="receber-email" id="receber-email"
@@ -191,12 +259,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- Botao de Enviar -->
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary" style="width:100%">Salvar</button>
                 </div>
             </form>
         </div>
     </main>
+    <!-- Tabela Escondida - Exibição de dados-->
     <div class="container">
         <section id="table-dados" class="pt-5">
             <table class="table d-none" id="tabela-dados">
@@ -287,5 +357,44 @@
             </table>
         </section>
     </div>
+    <!-- Fim da Tabela Escondida - Exibição de dados-->
+
+    <footer class="text-center text-white">
+        <!-- Grid Rodapé -->
+        <div class="container pt-4">
+            <!-- Mídias Sociais - Rodapé -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.facebook.com/cardbtt/"
+                    target="_blank"><i class="bi bi-facebook"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!"><i class="bi bi-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!"><i class="bi bi-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://www.instagram.com/leobertinatti/" target="_blank"><i class="bi bi-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://www.linkedin.com/in/leobertinatti/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://github.com/Bertinatti/"
+                    target="_blank"><i class="bi bi-github"></i></a>
+            </section>
+            <!-- Fim das Mídias Sociais Rodapé -->
+        </div>
+        <!-- Grid Rodapé -->
+
+        <!-- Copyright -->
+        <div class="text-center text-light p-3" style="background-color: rgb(0, 0, 0);">© 2022 Copyright:
+            <a class="text-light" href="https://github.com/Bertinatti" target="_blank">Bertinatti</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 </body>
+
 </html>
