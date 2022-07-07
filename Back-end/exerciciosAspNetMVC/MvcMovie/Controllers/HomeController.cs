@@ -18,11 +18,24 @@ namespace MvcMovie.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Sobre()
+        {
+            return View();
+        }
+        public IActionResult Cadastrar()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Cadastrar(Pessoa p)
+        {
+            return View("Pessoa", p);
+        }
+        public IActionResult Pessoa(Pessoa p)
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
