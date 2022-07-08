@@ -28,10 +28,11 @@ namespace exerciciosVeiculos_EF
             db.Veiculos.Add(this);
             db.SaveChanges();
         }
-        public void Remover()
+        public static void Remover(int id)
         {
             var db = new BaseContext();
-            db.Veiculos.Remove(this);
+            Veiculo veiculo = db.Veiculos.Single(v => v.Id == id);
+            db.Veiculos.Remove(veiculo);
             db.SaveChanges();
         }
         public static List<Veiculo> Todos()

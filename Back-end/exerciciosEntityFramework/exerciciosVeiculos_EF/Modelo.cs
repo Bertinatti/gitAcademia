@@ -22,7 +22,13 @@ namespace exerciciosVeiculos_EF
             db.Modelos.Add(this);
             db.SaveChanges();
         }
-
+        public static void Remover(int id)
+        {
+            var db = new BaseContext();
+            Modelo modelo = db.Modelos.Single(m => m.Id == id);
+            db.Modelos.Remove(modelo);
+            db.SaveChanges();
+        }
         public static List<Modelo> Todos()
         {
             var db = new BaseContext();

@@ -68,7 +68,9 @@ namespace exerciciosVeiculos_EF
                 int anoVeiculo = int.Parse(tbAno.Text);
                 int modeloVeiculo = int.Parse(tbModeloVeiculo.Text);
 
-                Veiculo novoVeiculo = new Veiculo() { Nome = nomeVeiculo, ModeloId = modeloVeiculo, Ano = anoVeiculo };
+                Veiculo novoVeiculo = new Veiculo()  { ModeloId = modeloVeiculo, Nome = nomeVeiculo, Ano = anoVeiculo };
+
+                novoVeiculo.Salvar();
 
                 MessageBox.Show("Sucesso na inserção de dados.", "Sucesso");
 
@@ -85,5 +87,24 @@ namespace exerciciosVeiculos_EF
             }
         }
 
+        private void btnRemoverModelo_Click(object sender, EventArgs e)
+        {
+            int idModelo = int.Parse(tbModelos.Text);
+
+            Modelo.Remover(idModelo);
+
+            popularDataGridModelos();
+
+        }
+
+        private void btnRemoverVeiculo_Click(object sender, EventArgs e)
+        {
+
+            int idVeiculo = int.Parse(tbNome.Text);
+
+            Veiculo.Remover(idVeiculo);
+
+            popularDataGridVeiculos();     
+        }
     }
 }
