@@ -23,7 +23,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DesafioFINAL.Areas.Identity.Pages.Account
 {
-    [Authorize]
+    [Authorize(Roles ="Administrador")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -146,7 +146,7 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Senha")]
             public string Password { get; set; }
 
             /// <summary>
@@ -154,8 +154,8 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirme a senha")]
+            [Compare("Password", ErrorMessage = "As senhas digitadas não são iguais.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -172,8 +172,7 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
-                new Usuario
+                var user = new Usuario
                 {
                     UserName = Input.Email,
                     Email = Input.Email,
@@ -187,14 +186,27 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
                     Estado = Input.Estado,
                     TipoUsuario = Input.TipoUsuario,
                 };
-
+       
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                var result = await _userManager.CreateAsync(user, Input.Password);             
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Usuário cadastrou uma nova conta com senha.");
+
+                    if (user.TipoUsuario.Equals(MyRoles.RoleAdmin))
+                    {
+                        await _userManager.AddToRoleAsync(user, MyRoles.RoleAdmin);
+                    }
+                    else if (user.TipoUsuario.Equals(MyRoles.RoleStaff))
+                    {
+                        await _userManager.AddToRoleAsync(user, MyRoles.RoleStaff);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, MyRoles.RoleStaff);
+                    }
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -205,8 +217,8 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirme seu e-mail",
+                        $"Por favor, confirme a sua conta<a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicando aqui</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -214,7 +226,7 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        //await _signInManager.SignInAsync(user, isPersistent: true);
                         return LocalRedirect(returnUrl);
                     }
                 }
@@ -236,9 +248,9 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
-                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
+                throw new InvalidOperationException($"Não foi possível cria o usuário '{nameof(IdentityUser)}'. " +
+                    $"Verifique '{nameof(IdentityUser)}' não é uma classe abstrata e tem um construtor sem parâmetros, ou alternativamente " +
+                    $"substituiu a página em /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
@@ -246,7 +258,7 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
         {
             if (!_userManager.SupportsUserEmail)
             {
-                throw new NotSupportedException("The default UI requires a user store with email support.");
+                throw new NotSupportedException("A aplicação necessita de um e-mail para o usuário.");
             }
             return (IUserEmailStore<IdentityUser>)_userStore;
         }

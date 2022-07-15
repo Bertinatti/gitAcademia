@@ -1,7 +1,7 @@
 ﻿@page
 @model LoginWith2faModel
 @{
-    ViewData["Title"] = "Two-factor authentication";
+    ViewData["Title"] = "Autenticador em dois fatores 2FA";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -18,7 +18,7 @@
                 <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
             </div>
             <div>
-                <div class="checkbox">
+                <div class="checkbox mt-2">
                     <label asp-for="Input.RememberMachine" class="form-label">
                         <input asp-for="Input.RememberMachine" />
                         @Html.DisplayNameFor(m => m.Input.RememberMachine)
@@ -26,14 +26,14 @@
                 </div>
             </div>
             <div>
-                <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                <button type="submit" class="w-100 btn btn-lg btn-primary mt-2">Log in</button>
             </div>
         </form>
     </div>
 </div>
 <p>
-    Don't have access to your authenticator device? You can
-    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
+    Não tem acesso ao seu dispositivo autenticador? Você pode
+    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">logar com um código de recuperação</a>.
 </p>
 
 @section Scripts {

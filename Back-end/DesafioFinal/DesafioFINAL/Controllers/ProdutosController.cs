@@ -27,7 +27,7 @@ namespace DesafioFINAL.Controllers
         {
               return _context.Produto != null ? 
                           View(await _context.Produto.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Produto'  is null.");
+                          Problem("A entidade 'ApplicationDbContext.Produto'  está vazia.");
         }
 
         // GET: Produtos/Details/5
@@ -178,7 +178,7 @@ namespace DesafioFINAL.Controllers
         {
             if (_context.Produto == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Produto'  is null.");
+                return Problem("A entidade 'ApplicationDbContext.Produto'  está vazia.");
             }
             var produto = await _context.Produto.FindAsync(id);
             if (produto != null)

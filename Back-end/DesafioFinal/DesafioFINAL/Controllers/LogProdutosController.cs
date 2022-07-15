@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DesafioFINAL.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class LogProdutosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -50,7 +50,7 @@ namespace DesafioFINAL.Controllers
         // GET: LogProdutos/Create
         public IActionResult Create()
         {
-            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "CNPJFornecedor");
+            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "Nome");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace DesafioFINAL.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "CNPJFornecedor", logProdutos.IdProduto);
+            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "Nome", logProdutos.IdProduto);
             return View(logProdutos);
         }
 
@@ -84,7 +84,7 @@ namespace DesafioFINAL.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "CNPJFornecedor", logProdutos.IdProduto);
+            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "Nome", logProdutos.IdProduto);
             return View(logProdutos);
         }
 
@@ -120,7 +120,7 @@ namespace DesafioFINAL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "CNPJFornecedor", logProdutos.IdProduto);
+            ViewData["IdProduto"] = new SelectList(_context.Produto, "IdProduto", "Nome", logProdutos.IdProduto);
             return View(logProdutos);
         }
 
@@ -150,7 +150,7 @@ namespace DesafioFINAL.Controllers
         {
             if (_context.LogProdutos == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.LogProdutos'  is null.");
+                return Problem("A entidade 'ApplicationDbContext.LogProdutos'  é nula.");
             }
             var logProdutos = await _context.LogProdutos.FindAsync(id);
             if (logProdutos != null)

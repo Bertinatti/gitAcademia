@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesafioFINAL.Models
 {
-    public class Usuario : IdentityUser
+     public class Usuario : IdentityUser
     {
         [Required]
         [StringLength(250, ErrorMessage = "O {0} pode ter no máximo {1} digitos.")]

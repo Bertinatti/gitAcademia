@@ -62,16 +62,16 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(7, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(7, ErrorMessage = "O {0} precisar ter pelo menos {2} e no máximo {1} caracteres de extensão.", MinimumLength = 6)]
             [DataType(DataType.Text)]
-            [Display(Name = "Authenticator code")]
+            [Display(Name = "Código de autenticação")]
             public string TwoFactorCode { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Remember this machine")]
+            [Display(Name = "Lembrar desse computador?")]
             public bool RememberMachine { get; set; }
         }
 
@@ -82,7 +82,7 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
 
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"Não foi possível carregar a autenticação em dois fatores para o usuário.");
             }
 
             ReturnUrl = returnUrl;
@@ -103,7 +103,7 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"Não foi possível carregar a autenticação em dois fatores para o usuário.");
             }
 
             var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
@@ -114,18 +114,18 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
+                _logger.LogInformation("Usuário ID '{UserId}' logou com a autenticação em dois fatores 2FA.", user.Id);
                 return LocalRedirect(returnUrl);
             }
             else if (result.IsLockedOut)
             {
-                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+                _logger.LogWarning("O usuário de ID '{UserId}' teve sua conta bloqueada.", user.Id);
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
+                _logger.LogWarning("Código de autenticador inválido inserido para usuário com ID '{UserId}'.", user.Id);
+                ModelState.AddModelError(string.Empty, "Código de autenticação inválida.");
                 return Page();
             }
         }

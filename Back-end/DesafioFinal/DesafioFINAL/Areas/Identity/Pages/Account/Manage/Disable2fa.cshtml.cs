@@ -36,12 +36,12 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Não foi possível achar o usuário com ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!await _userManager.GetTwoFactorEnabledAsync(user))
             {
-                throw new InvalidOperationException($"Cannot disable 2FA for user as it's not currently enabled.");
+                throw new InvalidOperationException($"Não é possível desativar a autenticação em dois fatores 2FA, pois ela não está habilitada.");
             }
 
             return Page();
@@ -52,7 +52,7 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Não foi possível achar o usuário com ID '{_userManager.GetUserId(User)}'.");
             }
 
             var disable2faResult = await _userManager.SetTwoFactorEnabledAsync(user, false);
@@ -61,8 +61,8 @@ namespace DesafioFINAL.Areas.Identity.Pages.Account.Manage
                 throw new InvalidOperationException($"Unexpected error occurred disabling 2FA.");
             }
 
-            _logger.LogInformation("User with ID '{UserId}' has disabled 2fa.", _userManager.GetUserId(User));
-            StatusMessage = "2fa has been disabled. You can reenable 2fa when you setup an authenticator app";
+            _logger.LogInformation("O usuário '{UserId}' desabilitou a autenticação em dois fatores 2fa.", _userManager.GetUserId(User));
+            StatusMessage = "2fa foi desabilitado. Você não poderá reativar a autenticação em dois fatores 2fa enquanto não configurar o aplicativo de autenticação";
             return RedirectToPage("./TwoFactorAuthentication");
         }
     }

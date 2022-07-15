@@ -1,17 +1,16 @@
 ﻿@model IEnumerable<DesafioFINAL.Models.LogProdutos>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Logs";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-outline-dark position-absolute" style="z-index:3" asp-action="Create"> Novo Log</a>
 </p>
-<table class="table">
-    <thead>
+ 
+<table id="tabela-log-produtos" class="table pb-3 pt-3" >
+    <thead class="bg-black text-light">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.EmailUsuario)
@@ -38,11 +37,18 @@
                 @Html.DisplayFor(modelItem => item.DataLog)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdLog">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdLog">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdLog">Delete</a>
+                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.IdLog">Editar</a>
+                <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.IdLog">Detalhes</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdLog">Deletar</a>
             </td>
         </tr>
 }
     </tbody>
+    <tfoot class="bg-black text-light pb-2">
+        <tr>
+            <th colspan="4" class="text-center pb-3">
+                Log de Produtos - Ações dos usuários no sistema. 
+            </th>
+        </tr>
+    </tfoot>
 </table>
