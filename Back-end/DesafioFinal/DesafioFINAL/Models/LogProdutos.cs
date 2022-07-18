@@ -17,11 +17,10 @@ namespace DesafioFINAL.Models
         public string EmailUsuario { get; set; }
 
         [ForeignKey("Produto")]
-        [Required]
         [Column("IdProduto", TypeName = "integer")]
         [Display(Name = "Id do Produto")]
-        public int IdProduto { get; set; }
-        public virtual Produto Produto { get; set; }
+        public int? IdProduto { get; set; }
+        public virtual Produto? Produto { get; set; }
 
         [Required]
         [Column("AcaoLog", TypeName = "varchar(250)")]

@@ -9,6 +9,8 @@ using DesafioFINAL;
 using DesafioFINAL.Data;
 using Microsoft.AspNetCore.Authorization;
 using DesafioFINAL.Models;
+using System.Security;
+using System.Security.Permissions;
 
 namespace DesafioFINAL.Controllers
 {
@@ -25,9 +27,9 @@ namespace DesafioFINAL.Controllers
         // GET: Produtos
         public async Task<IActionResult> Index()
         {
-              return _context.Produto != null ? 
-                          View(await _context.Produto.ToListAsync()) :
-                          Problem("A entidade 'ApplicationDbContext.Produto'  está vazia.");
+            return _context.Produto != null ? 
+                        View(await _context.Produto.ToListAsync()) :
+                        Problem("A entidade 'ApplicationDbContext.Produto'  está vazia.");
         }
 
         // GET: Produtos/Details/5
@@ -69,7 +71,7 @@ namespace DesafioFINAL.Controllers
             }
 
             if (ModelState.IsValid)
-            {
+            {               
                 _context.Add(produto);
                 await _context.SaveChangesAsync();
                 _context.LogProdutos.Add(new LogProdutos
@@ -95,10 +97,17 @@ namespace DesafioFINAL.Controllers
             }
 
             var produto = await _context.Produto.FindAsync(id);
+
             if (produto == null)
             {
                 return NotFound();
             }
+
+            if (produto.Nome == "PRODUTO DELETADO")
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(produto);
         }
 
@@ -120,7 +129,7 @@ namespace DesafioFINAL.Controllers
             {
                 ModelState.AddModelError("CodigoEAN", "Código de barras já existente.");
             }
-
+        
             if (ModelState.IsValid)
             {
                 try
@@ -180,22 +189,45 @@ namespace DesafioFINAL.Controllers
             {
                 return Problem("A entidade 'ApplicationDbContext.Produto'  está vazia.");
             }
+
             var produto = await _context.Produto.FindAsync(id);
+            var produtoTMP = produto;
+            var produtoNULO = _context.Produto.FirstOrDefault(x => x.Nome == "PRODUTO DELETADO");
+
+            if(produto.Nome == "PRODUTO DELETADO")
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             if (produto != null)
             {
+                var listalogProdutos = await _context.LogProdutos.ToListAsync();
+
+                foreach (var log in listalogProdutos)
+                {
+                    if(log.IdProduto == produto.IdProduto)
+                    {
+                        log.IdProduto = produtoNULO.IdProduto;
+                        _context.SaveChanges();
+                    }
+                }
+         
                 _context.Produto.Remove(produto);
             }
-            
+
             await _context.SaveChangesAsync();
+
             _context.LogProdutos.Add(new LogProdutos
             {
                 EmailUsuario = User.Identity.Name,
-                IdProduto = produto.IdProduto,
-                AcaoLog = String.Concat("Usuário deletou o produto: ", produto.Nome.ToUpper()),
+                IdProduto = produtoNULO.IdProduto,
+                AcaoLog = String.Concat("Usuário deletou o produto: ", produtoTMP.Nome.ToUpper()),
                 DataLog = DateTime.Now,
 
             });
+
             _context.SaveChanges();
+
             return RedirectToAction(nameof(Index));
         }
 

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DesafioFINAL.Data;
 using DesafioFINAL.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace DesafioFINAL.Controllers
 {
@@ -15,10 +16,13 @@ namespace DesafioFINAL.Controllers
     public class LogProdutosController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public LogProdutosController(ApplicationDbContext context)
+        public LogProdutosController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+
         }
 
         // GET: LogProdutos
@@ -61,6 +65,12 @@ namespace DesafioFINAL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdLog,EmailUsuario,IdProduto,AcaoLog,DataLog")] LogProdutos logProdutos)
         {
+            bool emailExistente = _userManager.Users.Any(x => x.Email == logProdutos.EmailUsuario);
+            if (emailExistente == false)
+            {
+                ModelState.AddModelError("EmailUsuario", "Usuário não está cadatraddo");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(logProdutos);
@@ -98,6 +108,12 @@ namespace DesafioFINAL.Controllers
             if (id != logProdutos.IdLog)
             {
                 return NotFound();
+            }
+
+            bool emailExistente = _userManager.Users.Any(x => x.Email == logProdutos.EmailUsuario);
+            if (emailExistente == false)
+            {
+                ModelState.AddModelError("EmailUsuario", "Usuário não está cadatraddo.");
             }
 
             if (ModelState.IsValid)

@@ -4,6 +4,7 @@ using DesafioFINAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioFINAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220716194212_MudandoFKsConstrains")]
+    partial class MudandoFKsConstrains
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +47,7 @@ namespace DesafioFINAL.Migrations
                         .HasColumnType("varchar(250)")
                         .HasColumnName("EmailUsuario");
 
-                    b.Property<int?>("IdProduto")
+                    b.Property<int>("IdProduto")
                         .HasColumnType("integer")
                         .HasColumnName("IdProduto");
 
@@ -370,7 +372,9 @@ namespace DesafioFINAL.Migrations
                 {
                     b.HasOne("DesafioFINAL.Produto", "Produto")
                         .WithMany()
-                        .HasForeignKey("IdProduto");
+                        .HasForeignKey("IdProduto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Produto");
                 });

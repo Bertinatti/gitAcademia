@@ -13,7 +13,7 @@
         integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body onload="verTamanhoTela()">
+<body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black text-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -37,7 +37,7 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="LogProdutos" asp-action="Index">Log de Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Cadastrar funcionário</a>
+                            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Cadastrar Usuário</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidade</a>
@@ -48,11 +48,13 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
     <footer class="text-center text-white fixed-bottom border-top text-muted">
         <!-- Grid Rodapé -->
         <div class="container pt-2">
@@ -89,11 +91,7 @@
         </div>
         <!-- Copyright -->
     </footer>
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - DesafioFINAL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>*@
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -113,8 +111,21 @@
                 processing: false,
                 ordering:false,               
                 paging:true,
-                //scrollY: '354px',
-                //scrollCollapse: true,
+                searching:true,
+                responsive:true,
+                pageLength: 9,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json'
+                }
+            });
+        });
+        
+        $(document).ready(function () {
+            $('#tabela-log-produtos').DataTable({             
+                lengthChange:false,
+                processing: false,
+                ordering:false,               
+                paging:true,
                 searching:true,
                 responsive:true,
                 pageLength: 9,
@@ -125,13 +136,11 @@
         });
 
         $(document).ready(function () {
-            $('#tabela-log-produtos').DataTable({             
+            $('#tabela-usuario').DataTable({             
                 lengthChange:false,
                 processing: false,
                 ordering:false,               
                 paging:true,
-                //scrollY: '354px',
-                //scrollCollapse: true,
                 searching:true,
                 responsive:true,
                 pageLength: 9,
@@ -139,8 +148,7 @@
                     url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/pt-BR.json'
                 }
             });
-        });
-                        
+        });                       
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
